@@ -261,3 +261,51 @@ const products = [
   { name: "Ribbed Cropped Tank Top", gender: "Women" },
   { name: "Soft Ribbed Crew Neck Striped T-Shirt", gender: "Women" },
 ];
+function filterByGender(gender) {
+  const productItems = document.querySelectorAll(".items");
+
+  productItems.forEach((item) => {
+    const itemGender = item.dataset.gender;
+
+    if (gender === "all" || itemGender === gender) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+
+function renderProductsByGender(products, selectedGender) {
+  const productsSection = document.querySelector(".products");
+
+  products.forEach((product) => {
+    if (selectedGender === "all" || product.gender === selectedGender) {
+      const item = document.createElement("div");
+      item.classList.add("item");
+      item.dataset.gender = product.gender;
+
+      item.innerHTML = `
+                <p class="availability">${getRandomAvailability()}</p>
+                <p class="price">$${getRandomPrice()}</p>
+                <button onclick="addToCart('${
+                  product.name
+                }')">Add to Cart</button>
+                <h3>${product.name}</h3>
+            `;
+
+      productsSection.appendChild(item);
+    }
+  });
+}
+
+// Initial render
+renderProductsByGender(products, "all");
+
+// Event listener for gender filter dropdown
+document.getElementById("genderFilter").addEventListener("change", function () {
+  const selectedGender = this.value;
+  // Clear existing products
+  document.querySelector(".products").innerHTML = "";
+  // Render products based on selected gender
+  renderProductsByGender(products, selectedGender);
+});
