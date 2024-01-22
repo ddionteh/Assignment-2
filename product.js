@@ -231,3 +231,33 @@ function getProductPrice(productName) {
   // Add prices for other products as needed
   return 0; // If price not found
 }
+function toggleCart() {
+  const cartPopup = document.getElementById("cartPopup");
+  cartPopup.style.display =
+    cartPopup.style.display === "block" ? "none" : "block";
+}
+//sort by gender
+
+const products = [
+  { name: "DRY-EX Crew Neck Short Sleeve T-Shirt (Print)", gender: "Men" },
+  { name: "AIRism Cotton Crew Neck T-Shirt", gender: "Men" },
+  { name: "AIRism Cotton Crew Neck Oversized T-Shirt", gender: "Men" },
+  { name: "AIRism Cotton Crew Neck Short Sleeve T-Shirt", gender: "Men" },
+  { name: "Waffle Crew Neck Long Sleeve T-Shirt", gender: "Men" },
+  {
+    name: "Ultra Stretch AIRism Cropped Short Sleeve T-Shirt (Co-ord)",
+    gender: "Women",
+  },
+  { name: "AIRism Drape Short Sleeve T-Shirt", gender: "Women" },
+  {
+    name: "Smooth Stretch Cotton Crew Neck Long Sleeve T-Shirt",
+    gender: "Women",
+  },
+  {
+    name: "HEATTECH Seamless Ribbed Striped T-Shirt (Extra Warm)",
+    gender: "Women",
+  },
+  { name: "Ribbed Cropped Ringer Tank Top", gender: "Women" },
+  { name: "Ribbed Cropped Tank Top", gender: "Women" },
+  { name: "Soft Ribbed Crew Neck Striped T-Shirt", gender: "Women" },
+];
