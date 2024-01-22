@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T-Shirt Page</title>
+    <link rel="stylesheet" href="product.css" />
+  </head>
+
+  <body>
+    <!-- Hotbar -->
+    <div class="hotbar">
+      <a href="home.html">
+        <img
+          src="https://w7.pngwing.com/pngs/784/183/png-transparent-shopify-logo-e-commerce-business-super-sale-angle-text-service.png"
+          alt="Logo"
+          class="logo"
+        />
+      </a>
+      <div class="categories">
+        <span>Categories</span>
+        <ul class="dropdown">
+          <a href="tshirt.html">T-Shirt</a>
+          <a href="pants.html">Pants</a>
+          <a href="accesories.html">Accesories</a>
+          <a href="outerwear.html">OuterWear</a>
+        </ul>
+      </div>
+      <input type="text" placeholder="Search" class="search-bar" />
+      <button class="chatbot-icon">
+        <a href="aichat.html">
+          <img
+            src="https://img.freepik.com/premium-vector/bot-icon-chatbot-icon-concept-vector-illustration_230920-1327.jpg?w=740"
+            alt="Chatbot"
+          />
+        </a>
+      </button>
+      <button class="redeem-icon">
+        <a href="redeem.html">
+          <img
+            src="https://www.clipartmax.com/png/middle/35-359769_redeem-points-icon.png"
+            alt="Redeem"
+          />
+        </a>
+      </button>
+      <button class="cart-icon">
+        <a href="cart.html">
+          <img
+            src="https://cdn2.vectorstock.com/i/1000x1000/06/01/black-shopping-cart-icon-on-transparent-background-vector-22510601.jpg"
+            alt="Cart"
+          />
+        </a>
+      </button>
+      <button class="account-icon">
+        <a href="login.html">
+          <img
+            src="https://p1.hiclipart.com/preview/767/731/727/face-icon-user-user-profile-icon-design-avatar-share-icon-computer-head-png-clipart.jpg"
+            alt="Account"
+          />
+        </a>
+      </button>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Header -->
+      <header>
+        <h1 class="page-title">T-Shirts</h1>
+      </header>
+
+      <!--filter section -->
+      <div class="filter-section">
+        <div class="sort-by">
+          <span>Sort by:</span>
+          <select id="sortSelect" onchange="sortBy(this.value)">
+            <option value="default">Default</option>
+            <option value="availability">Availability</option>
+            <option value="price">Price</option>
+          </select>
+        </div>
+
+        <div class="filter-by-gender">
+          <span>Filter by Gender:</span>
+          <select id="genderFilter" onchange="filterByGender(this.value)">
+            <option value="all">All</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
