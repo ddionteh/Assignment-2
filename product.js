@@ -106,118 +106,128 @@ function displayCart() {
 }
 
 document.getElementById("sortSelect").addEventListener("change", function () {
-    const selected = this.value;
-    if (selected !== "default") {
-      sortBy(selected);
-    }
-  });
-  
-  // Function to get price based on product name (Sample implementation)
-  function getProductPrice(productName) {
-    if (productName === "DRY-EX Crew Neck Short Sleeve T-Shirt (Print)") {
-      return 14.90;
-    } else if (productName === "AIRism Cotton Crew Neck T-Shirt") {
-      return 19.90;
-    } else if (productName === "AIRism Cotton Crew Neck Oversized T-Shirt") {
-      return 19.90;
-    } else if (productName === "AIRism Cotton Crew Neck Short Sleeve T-Shirt") {
-      return 14.90;
-    } else if (productName === "Waffle Crew Neck Long Sleeve T-Shirt") {
-      return 29.90;
-    } else if (productName === "Dry Crew Neck Short Sleeve Colour T-Shirt") {
-      return 9.90;
-    } else if (productName === "Ultra Stretch AIRism Cropped Short Sleeve T-Shirt (Co-ord)") {
-      return 14.90;
-    } else if (productName === "AIRism Drape Short Sleeve T-Shirt") {
-      return 14.90;
-    } else if (productName === "HEATTECH Seamless Ribbed Striped T-Shirt (Extra Warm)") {
-      return 14.90;
-    } else if (productName === "Ribbed Cropped Ringer Tank Top") {
-      return 14.90;
-    } else if (productName === "Ribbed Cropped Tank Top") {
-      return 14.90;
-    } else if (productName === "Soft Ribbed Crew Neck Striped T-Shirt") {
-      return 14.90;
-    } else if (productName === "Mini Short Sleeve T-Shirt") {
-      return 14.90;
-    } else if (productName === "Supima Cotton Crew Neck Short Sleeve T-Shirt") {
-      return 14.90;
-    } else if (productName === "Smooth Stretch Cotton Crew Neck Long Sleeve T-Shirt") {
-      return 19.90;
+  const selected = this.value;
+  if (selected !== "default") {
+    sortBy(selected);
+  }
+});
 
-    } else if (productName === "Miracle Air Pants (AirSense Pants) (Cotton Like)") {
-      return 59.90;
-    } else if (productName === "Ultra Stretch DRY-EX Jogger Pants") {
-      return 29.90;
-    } else if (productName === "Smart Ankle Pants (Gunclub Check)") {
-      return 49.90;
-    } else if (productName === "Washed Jersey Jogger Pants") {
-      return 39.90;
-    } else if (productName === "Smart Ankle Pants (Ultra Stretch)") {
-      return 49.90;
-    } else if (productName === "Cargo Pants") {
-      return 49.90;
-    } else if (productName === "Linen Blend Relaxed Pants") {
-      return 49.90;
-    } else if (productName === "Denim Wide Straight Cargo Pants") {
-      return 49.90;
-    } else if (productName === "Wide Straight Cargo Pants") {
-      return 49.90;
-    } else if (productName === "Ultra Stretch Soft Pants") {
-      return 29.90;
-    } else if (productName === "Pleated Straight Pants") {
-      return 39.90;
-    } else if (productName === "Flannel Pants") {
-      return 19.90;
+// Function to get price based on product name (Sample implementation)
+function getProductPrice(productName) {
+  if (productName === "DRY-EX Crew Neck Short Sleeve T-Shirt (Print)") {
+    return 14.9;
+  } else if (productName === "AIRism Cotton Crew Neck T-Shirt") {
+    return 19.9;
+  } else if (productName === "AIRism Cotton Crew Neck Oversized T-Shirt") {
+    return 19.9;
+  } else if (productName === "AIRism Cotton Crew Neck Short Sleeve T-Shirt") {
+    return 14.9;
+  } else if (productName === "Waffle Crew Neck Long Sleeve T-Shirt") {
+    return 29.9;
+  } else if (productName === "Dry Crew Neck Short Sleeve Colour T-Shirt") {
+    return 9.9;
+  } else if (
+    productName === "Ultra Stretch AIRism Cropped Short Sleeve T-Shirt (Co-ord)"
+  ) {
+    return 14.9;
+  } else if (productName === "AIRism Drape Short Sleeve T-Shirt") {
+    return 14.9;
+  } else if (
+    productName === "HEATTECH Seamless Ribbed Striped T-Shirt (Extra Warm)"
+  ) {
+    return 14.9;
+  } else if (productName === "Ribbed Cropped Ringer Tank Top") {
+    return 14.9;
+  } else if (productName === "Ribbed Cropped Tank Top") {
+    return 14.9;
+  } else if (productName === "Soft Ribbed Crew Neck Striped T-Shirt") {
+    return 14.9;
+  } else if (productName === "Mini Short Sleeve T-Shirt") {
+    return 14.9;
+  } else if (productName === "Supima Cotton Crew Neck Short Sleeve T-Shirt") {
+    return 14.9;
+  } else if (
+    productName === "Smooth Stretch Cotton Crew Neck Long Sleeve T-Shirt"
+  ) {
+    return 19.9;
+  } else if (
+    productName === "Miracle Air Pants (AirSense Pants) (Cotton Like)"
+  ) {
+    return 59.9;
+  } else if (productName === "Ultra Stretch DRY-EX Jogger Pants") {
+    return 29.9;
+  } else if (productName === "Smart Ankle Pants (Gunclub Check)") {
+    return 49.9;
+  } else if (productName === "Washed Jersey Jogger Pants") {
+    return 39.9;
+  } else if (productName === "Smart Ankle Pants (Ultra Stretch)") {
+    return 49.9;
+  } else if (productName === "Cargo Pants") {
+    return 49.9;
+  } else if (productName === "Linen Blend Relaxed Pants") {
+    return 49.9;
+  } else if (productName === "Denim Wide Straight Cargo Pants") {
+    return 49.9;
+  } else if (productName === "Wide Straight Cargo Pants") {
+    return 49.9;
+  } else if (productName === "Ultra Stretch Soft Pants") {
+    return 29.9;
+  } else if (productName === "Pleated Straight Pants") {
+    return 39.9;
+  } else if (productName === "Flannel Pants") {
+    return 19.9;
+  } else if (productName === "Ultra Light Down Jacket") {
+    return 99.9;
+  } else if (productName === "Cotton Blend Parka") {
+    return 59.9;
+  } else if (productName === "Jersey Relaxed Jacket") {
+    return 49.9;
+  } else if (productName === "Seamless Down Parka (Nanodesign)") {
+    return 49.9;
+  } else if (productName === "AirSense Jacket (Co-ord)") {
+    return 39.9;
+  } else if (productName === "Pocketable UV Protection Parka (Patterned)") {
+    return 49.9;
+  } else if (productName === "Double Face Wrap Coat") {
+    return 39.9;
+  } else if (productName === "Coach Jacket (Graphic) (Keith Haring)") {
+    return 59.9;
+  } else if (productName === "Ultra Light Down Parka (3D Cut)") {
+    return 99.9;
+  } else if (productName === "Sweat Long Sleeve Full-Zip Hoodie (Co-ord)") {
+    return 49.9;
+  } else if (productName === "AirSense Jacket (Cotton Like)") {
+    return 79.9;
+  } else if (
+    productName === "Miracle Air Jacket (AirSense Jacket) (Cotton Like)"
+  ) {
+    return 79.9;
+  } else if (productName === "Italian Leather Vintage Belt") {
+    return 39.9;
+  } else if (productName === "Leather Wide Mesh Belt") {
+    return 39.9;
+  } else if (productName === "HEATTECH Lined Stretch Gloves") {
+    return 19.9;
+  } else if (productName === "Square Sunglasses") {
+    return 29.9;
+  } else if (productName === "UV Protection 2WAY Stretch Cap") {
+    return 29.9;
+  } else if (productName === "UV Protection Cap (Keith Haring)") {
+    return 29.9;
+  } else if (productName === "UV Protection Knitted Cap") {
+    return 29.9;
+  } else if (productName === "One Handle Bag") {
+    return 39.9;
+  } else if (productName === "Crochet Hat") {
+    return 39.9;
+  } else if (productName === "Studio Ghibli Round Mini Shoulder Bag") {
+    return 19.9;
+  } else if (productName === "Clean Belt") {
+    return 39.9;
+  } else if (productName === "HEATTECH Lining Function Gloves") {
+    return 19.9;
+  }
 
-    } else if (productName === "Ultra Light Down Jacket") {
-      return 99.90;
-    } else if (productName === "Cotton Blend Parka") {
-      return 59.90;
-    } else if (productName === "Jersey Relaxed Jacket") {
-      return 49.90;
-    } else if (productName === "Seamless Down Parka (Nanodesign)") {
-      return 49.90;
-    }else if (productName === "AirSense Jacket (Co-ord)") {
-      return 39.90;
-    } else if (productName === "Pocketable UV Protection Parka (Patterned)") {
-      return 49.90;
-    } else if (productName === "Double Face Wrap Coat") {
-      return 39.90;
-    } else if (productName === "Coach Jacket (Graphic) (Keith Haring)") {
-      return 59.90;
-    }else if (productName === "Ultra Light Down Parka (3D Cut)") {
-      return 99.90;
-    } else if (productName === "Sweat Long Sleeve Full-Zip Hoodie (Co-ord)") {
-      return 49.90;
-    } else if (productName === "AirSense Jacket (Cotton Like)") {
-      return 79.90;
-    } else if (productName === "Miracle Air Jacket (AirSense Jacket) (Cotton Like)") {
-      return 79.90;
-    }
-
-    else if (productName === "Italian Leather Vintage Belt") {
-      return 39.90;
-    } else if (productName === "Leather Wide Mesh Belt") {
-      return 39.90;
-    } else if (productName === "HEATTECH Lined Stretch Gloves") {
-      return 19.90;
-    } else if (productName === "Square Sunglasses") {
-      return 29.90;
-    }else if (productName === "UV Protection 2WAY Stretch Cap") {
-      return 29.90;
-    } else if (productName === "UV Protection Cap (Keith Haring)") {
-      return 29.90;
-    } else if (productName === "UV Protection Knitted Cap") {
-      return 29.90;
-    } else if (productName === "One Handle Bag") {
-      return 39.90;
-    }else if (productName === "Crochet Hat") {
-      return 39.90;
-    } else if (productName === "Studio Ghibli Round Mini Shoulder Bag") {
-      return 19.90;
-    } else if (productName === "Clean Belt") {
-      return 39.90;
-    } else if (productName === "HEATTECH Lining Function Gloves") {
-      return 19.90;
-    }
+  // Add prices for other products as needed
+  return 0; // If price not found
+}
