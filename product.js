@@ -52,3 +52,55 @@ function addToCart(productName) {
 
   displayCart();
 }
+
+// Function to remove item from cart
+function removeFromCart(index) {
+  const item = cartItems[index];
+  if (item.quantity > 1) {
+    item.quantity--;
+  } else {
+    cartItems.splice(index, 1);
+  }
+  displayCart();
+}
+const storedCartItems = localStorage.getItem("cartItems");
+if (storedCartItems) {
+  cartItems = JSON.parse(storedCartItems);
+}
+document.getElementById("sortSelect").addEventListener("change", function () {
+  const selected = this.value;
+  if (selected !== "default") {
+    sortBy(selected);
+  }
+});
+function clearCart() {
+  cartItems = [];
+  localStorage.removeItem("cartItems");
+  displayCart();
+}
+
+// Display cart on page load
+displayCart();
+// Function to display cart items
+function displayCart() {
+  const cartcontainer = document.getElementById("cartItems");
+  cartcontainer.innerHTML = "";
+  let total = 0;
+
+  cartItems.forEach((item, index) => {
+    const cartDiv = document.createElement("div");
+    cartDiv.classList.add("cart-item");
+
+    cartDiv.innerHTML = `
+          <p>${item.name} - $${item.price} x ${item.quantity}</p>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+
+    cartcontainer.appendChild(cartDiv);
+    total += item.price * item.quantity;
+  });
+  const totalDiv = document.createElement("div");
+  totalDiv.classList.add("total");
+  totalDiv.innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+  cartcontainer.appendChild(totalDiv);
+}
