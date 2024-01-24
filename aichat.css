@@ -108,3 +108,38 @@
   background-color: #fff;
   border-radius: 10px; /* Adjust the border radius as needed */
 }
+/* Main */
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Adjust the border radius as needed */
+  padding: 10px;
+  background-color: #5f5f5f; /* Set background color */
+}
+
+.user-input {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.user-input button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.user-input button:hover {
+  background-color: #327736;
+}
