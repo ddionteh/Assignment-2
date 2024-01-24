@@ -47,3 +47,24 @@ function displayCart() {
 
   orderSummaryContainer.appendChild(totalDiv);
 }
+
+function removeFromCart(index) {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  if (cartItems[index].quantity > 1) {
+    cartItems[index].quantity--;
+  } else {
+    cartItems.splice(index, 1);
+  }
+
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  displayCart();
+}
+
+function continueShopping() {
+  window.location.href = "tshirt.html";
+}
+
+function goToCheckout() {
+  window.location.href = "checkout.html";
+}
