@@ -101,3 +101,59 @@ body {
     background-size: cover;
     height: 700px; /* Adjust as needed */
 }
+
+.products-section {
+    margin-top: 30px;
+    overflow: hidden;
+    position: relative;
+  }
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .item {
+    flex: 0 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+  }
+  .item .rating {
+    color: #543700; /* Set the color you prefer for the ratings */
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+  
+  .item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .description {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .description h3 {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .description p {
+    font-size: 14px;
+    color: #555;
+  }
+  .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+  }
