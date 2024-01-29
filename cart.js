@@ -47,6 +47,7 @@ function displayCart() {
 
   orderSummaryContainer.appendChild(totalDiv);
 }
+
 function removeFromCart(index) {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 

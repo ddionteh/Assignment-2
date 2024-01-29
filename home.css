@@ -105,7 +105,6 @@ body {
   background-size: cover;
   height: 700px; /* Adjust as needed */
 }
-
 /*popular products*/
 .products-section {
   margin-top: 32px;
@@ -164,7 +163,6 @@ body {
   font-size: 0.9em;
   line-height: 1.5;
 }
-
 /*footer*/
 footer {
   background-color: #333;
