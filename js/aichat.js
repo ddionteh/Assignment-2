@@ -1,3 +1,4 @@
+// API key: AIzaSyCTYgBtE1NR5IywGYSOwNYB_me6VeZAA5s
 document.getElementById("askButton").addEventListener("click", async () => {
   const userInput = document.getElementById("userInput").value;
 
