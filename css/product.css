@@ -164,34 +164,77 @@ body {
 
 /*footer*/
 footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
+  background: linear-gradient(
+    45deg,
+    #ffa31d,
+    #ef5454
+  ); /* Gradient background */
+  color: #000000;
+  padding: 40px;
   text-align: center;
 }
 
-footer img {
-  width: 50px;
-  height: 50px;
-}
-
-.quick-links {
-  list-style: none;
-  padding: 0;
+/* Add more padding for better spacing */
+.f-box {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.quick-links li {
-  margin: 0 10px;
+.content-box,
+.content-box1,
+.image-box {
+  flex: 1 1 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
-.social-icons {
-  margin-top: 20px;
+h3 {
+  color: #000000;
 }
 
-.social-icon {
+/* Update button styles for Quick Links */
+button {
+  background: linear-gradient(
+    45deg,
+    #ff0b03,
+    #f65d1c
+  ); /* Gradient background for buttons */
   color: #fff;
-  text-decoration: none;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(
+    45deg,
+    #000000,
+    #000000
+  ); /* Darker gradient on hover */
+}
+
+/* Update social icon styles */
+.image-box img {
+  width: 40px;
+  height: 40px;
   margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+.image-box img:hover {
+  transform: scale(1.2);
+}
+
+/* Additional styles for the whole page */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+.color-footer {
+  border-top: 2px solid #fff;
 }
