@@ -1,63 +1,97 @@
-// API key: AIzaSyCTYgBtE1NR5IywGYSOwNYB_me6VeZAA5s
-document.getElementById("askButton").addEventListener("click", async () => {
-  const userInput = document.getElementById("userInput").value;
+// // Gemini API key: AIzaSyCTYgBtE1NR5IywGYSOwNYB_me6VeZAA5s
+// please do not revoke this GitHub : OpenAI : sk-qHOAqzf (random) cfMEwKGp (spacing) FdPb2T3Bl (random) bkFJWh2mKUt (spacing) hmo7RWDJatF6k
 
-  if (!userInput.trim()) {
-    alert("Please enter some text.");
-    return;
+document.getElementById("buttonInput").addEventListener("click", function() {
+  let userText = document.getElementById("textInput").value;
+  if (userText == "") {
+      alert("Please enter a message.");
+      return;
   }
+  let chatbox = document.getElementById("chatbox");
+  chatbox.innerHTML += `<p class="userText"><span>${userText}</span></p>`;
+  document.getElementById("textInput").value = "";
 
-  const response = await askGPT35(userInput);
-  console.log(response);
-  if (response) {
-    document.getElementById("chatBox").textContent += `\nUser: ${userInput}\nAI: ${response}`;
-  } else {
-    document.getElementById("chatBox").textContent += "\nSorry, there was an error.";
-  }
+  // Example: Sending a request to OpenAI's API
+  fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+        'Authorization': 'Bearer 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',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+            {"role": "system", "content": "You are the best stylist in the world, able to recommend the best outfits to users. You are able to give different outfits for different demographics. "},
+            {"role": "assistant", "content": "Black Cargo pants and oversized White-colored T-Shirt."},
+        ]
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
 });
 
-async function askGPT35(prompt) {
 
-    const requestBody = {
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content: "You are a helpful assistant."
-        },
-        {
-          role: "user",
-          content: prompt
-        },
-      ]
-    };
-    // const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Authorization": "Bearer YOUR_OPENAI_API_KEY"  // Replace with your actual API key
-    //     },
-    //     body: JSON.stringify(requestBody)
-    //   });
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer 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" // Replace with your actual API key
-      },
-      body: JSON.stringify(requestBody)
-    });
 
-    console.log(response);
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
-    }
+// document.getElementById("askButton").addEventListener("click", async () => {
+//   const userInput = document.getElementById("userInput").value;
 
-    const data = await response.json();
-    console.log(data);
-    return data.choices[0].text.trim();
+//   if (!userInput.trim()) {
+//     alert("Please enter some text.");
+//     return;
+//   }
+
+//   const response = await askGPT35(userInput);
+//   console.log(response);
+//   if (response) {
+//     document.getElementById("chatBox").textContent += `\nUser: ${userInput}\nAI: ${response}`;
+//   } else {
+//     document.getElementById("chatBox").textContent += "\nSorry, there was an error.";
+//   }
+// });
+
+// async function askGPT35(prompt) {
+
+//     const requestBody = {
+//       model: "gpt-3.5-turbo",
+//       messages: [
+//         {
+//           role: "system",
+//           content: "You are a helpful assistant."
+//         },
+//         {
+//           role: "user",
+//           content: prompt
+//         },
+//       ]
+//     };
+//     // const response = await fetch("https://api.openai.com/v1/chat/completions", {
+//     //     method: "POST",
+//     //     headers: {
+//     //       "Content-Type": "application/json",
+//     //       "Authorization": "Bearer YOUR_OPENAI_API_KEY"  // Replace with your actual API key
+//     //     },
+//     //     body: JSON.stringify(requestBody)
+//     //   });
+//     const response = await fetch("https://api.openai.com/v1/chat/completions", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Authorization": "Bearer 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" // Replace with your actual API key
+//       },
+//       body: JSON.stringify(requestBody)
+//     });
+
+//     console.log(response);
+//     if (!response.ok) {
+//       throw new Error(`Error: ${response.status}`);
+//     }
+
+//     const data = await response.json();
+//     console.log(data);
+//     return data.choices[0].text.trim();
   
-}
+// }
 
 
 // function askAI() {
