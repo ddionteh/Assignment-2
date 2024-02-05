@@ -206,15 +206,15 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
-  transition: background 0.3s ease;
+  transition: background 1.5s ease;
 }
 
 button:hover {
   background: linear-gradient(
     45deg,
-    #000000,
-    #000000
-  ); /* Darker gradient on hover */
+    rgba(71, 71, 71, 1),
+    rgba(71, 71, 71, 0)
+  ); /* Gradient with fade on hover */
 }
 
 /* Update social icon styles */
