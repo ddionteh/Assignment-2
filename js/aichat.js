@@ -1,4 +1,7 @@
 // aichat.js
+// Gemini API key: AIzaSyCTYgBtE1NR5Iy (placeholder) wGYSOwNYB_me6VeZAA5s
+// OpenAI API key: sk-1VjfI36JtCWiPopkC1yST (placeholder) 3BlbkFJabZl0h5iZWk9U3qBRDCm
+
 
 function loadChatbot() {
   // Create chatbot elements
@@ -30,15 +33,6 @@ function loadChatbot() {
   // Append the chatbot to the body
   document.body.appendChild(chatbotDiv);
 
-  // // Now declare these after the chatbot has been appended to the DOM
-  // const chatInput = document.querySelector(".chat-input textarea");
-  // const sendChatBtn = document.querySelector(".chat-input span");
-  // const chatbox = document.querySelector(".chatbox");
-  // const closeBtn = document.querySelector(".close-btn");
-  // const chatbotToggler = document.querySelector(".chatbot-toggler");
-  
-  // // Gemini API key: AIzaSyCTYgBtE1NR5Iy (placeholder) wGYSOwNYB_me6VeZAA5s
-
   const chatbotToggler = document.querySelector(".chatbot-toggler");
   const closeBtn = document.querySelector(".close-btn");
   const chatbox = document.querySelector(".chatbox");
@@ -46,7 +40,7 @@ function loadChatbot() {
   const sendChatBtn = document.querySelector(".chat-input span");
 
   let userMessage = null; // Variable to store user's message
-  const API_KEY = "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"; // Paste your API key here
+  const API_KEY = "YOUR_OPEN_AI_API_KEY"; // Paste your API key here
 
   // Set the initial height for the chat input
   const inputInitHeight = chatInput.scrollHeight;
