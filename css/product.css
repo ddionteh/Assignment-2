@@ -85,18 +85,6 @@ body {
   margin: 0 10px;
 }
 
-.chatbot-icon,
-.redeem-icon,
-.cart-icon,
-.account-icon {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  margin: 0 5px;
-  font-size: 25px;
-}
-
 .background-image {
   position: relative;
   z-index: 1;
@@ -164,77 +152,136 @@ body {
 
 /*footer*/
 footer {
-  background: linear-gradient(
-    45deg,
-    #ffa31d,
-    #ef5454
-  ); /* Gradient background */
-  color: #000000;
-  padding: 40px;
+  background-color: #1d1a39;
   text-align: center;
+  padding: 40px;
 }
 
-/* Add more padding for better spacing */
+/* Flexbox for arranging content */
 .f-box {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
+/* Style for content boxes */
 .content-box,
 .content-box1,
 .image-box {
   flex: 1 1 100%;
   max-width: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  color: #ffffff;
 }
 
+/* Style for headings */
 h3 {
-  color: #000000;
+  color: #ffffff;
 }
 
-/* Update button styles for Quick Links */
+/* Style for buttons */
 button {
-  background: linear-gradient(
-    45deg,
-    #ff0b03,
-    #f65d1c
-  ); /* Gradient background for buttons */
-  color: #fff;
+  background: #242048;
+  color: #a2b5cd;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
-  transition: background 1.5s ease;
+  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 button:hover {
-  background: linear-gradient(
-    45deg,
-    rgba(71, 71, 71, 1),
-    rgba(71, 71, 71, 0)
-  ); /* Gradient with fade on hover */
+  background: #000000;
+  opacity: 0.6;
 }
 
-/* Update social icon styles */
+/* Style for social icons */
 .image-box img {
   width: 40px;
   height: 40px;
   margin: 0 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s ease;
 }
 
 .image-box img:hover {
   transform: scale(1.2);
 }
 
-/* Additional styles for the whole page */
-body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
+@media (max-width: 620px) {
+  footer {
+    flex-direction: column;
+  }
+
+  footer.bottom {
+    flex-direction: column-reverse;
+  }
 }
 
-.color-footer {
-  border-top: 2px solid #fff;
+/* Media query for larger screen sizes */
+@media (min-width: 620px) {
+  footer {
+    margin: 0 auto;
+    max-width: 100%;
+    display: flex; /* Ensure it's a flex container */
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+}
+
+/* Styling for top section of footer */
+footer.top {
+  border-bottom: 2px solid #3a4f6a;
+  padding-bottom: 20px;
+}
+
+/* Styling for bottom section of footer */
+footer.bottom {
+  padding: 20px 0;
+  justify-content: space-between;
+}
+
+/* Styling for links */
+.links {
+  display: flex;
+  gap: 18px;
+}
+
+.links > a {
+  font-size: 24px;
+}
+
+/* Styling for legal information */
+.legal {
+  font-size: 12px;
+}
+
+.legal > a {
+  margin: 0 4px;
+}
+
+.legal > span {
+  margin-right: 10px;
+}
+
+/* Additional styling for smaller screen sizes */
+@media (max-width: 420px) {
+  footer {
+    text-align: center;
+    align-items: center;
+  }
+
+  footer.top .links {
+    grid-template-columns: 1fr;
+  }
+
+  footer.bottom {
+    align-items: center;
+  }
+
+  .legal > span {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 2px;
+  }
 }

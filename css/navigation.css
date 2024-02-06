@@ -21,7 +21,7 @@ nav {
   margin: auto;
   border: 0;
   background-color: #ffffff; /* White background */
-  border-bottom: 1px solid #000000;
+  border-bottom: 2px solid #000000;
   width: 100%; /* Set the width of the border to 100% */
 }
 
