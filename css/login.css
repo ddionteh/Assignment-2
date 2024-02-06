@@ -181,7 +181,7 @@ iframe {
   background-image: url('../images/login-background.jpg');
 }
 
-.wrap-login100 {
+.wrap-login100, .wrap-signup100 {
   width: 500px;
   background: #fff;
   border-radius: 10px;
@@ -192,7 +192,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Form ]*/
 
-.login100-form {
+.login100-form,.signup100-form {
   width: 100%;
 }
 
@@ -354,7 +354,7 @@ iframe {
   transition: all 0.4s;
 }
 
-.login100-form-btn {
+.login100-form-btn, .signup100-form-btn {
   font-family: Poppins-Medium;
   font-size: 16px;
   color: #fff;
@@ -442,30 +442,6 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
-}
-
-/*//////////////////////////////////////////////////////////////////
-[ Social item ]*/
-.login100-social-item {
-  font-size: 25px;
-  color: #fff;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: 5px;
-}
-
-.login100-social-item:hover {
-  color: #fff;
-  background-color: #333333;
 }
 
 /*//////////////////////////////////////////////////////////////////

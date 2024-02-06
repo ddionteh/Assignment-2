@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </label>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="../index.html" class="active">Home</a></li>
                 <li><a href="#">Products</a></li>
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="cart.html">Cart</a></li>

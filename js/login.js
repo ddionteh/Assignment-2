@@ -30,7 +30,7 @@
     }
 
     if (check) {
-      redirectToHomePage(); // If form validation is successful, redirect to home page
+      window.location.href = '../index.html';  // If form validation is successful, redirect to home page
     }
   });
 
@@ -75,9 +75,12 @@
     function loginUser(event) {
         event.preventDefault(); // Prevent the default form submission
     
-        var username = document.getElementsByName("username")[0].value;
-        var password = document.getElementsByName("pass")[0].value;
-    
+        var username = document.getElementsByName("username")[0].value.trim();
+        var password = document.getElementsByName("pass")[0].value.trim();
+      
+
+        console.log(username);
+        console.log(password);
         // Send a request to RestDB to retrieve the user data
         fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?', {
             method: 'GET',
@@ -86,33 +89,32 @@
                 "x-apikey": "65c0999900d3da120a63a29b",
                 "cache-control": "no-cache"
             },
-            // Add query parameters as needed to search for the user
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
         })
         .then(users => {
-            // You would typically find the user by username here
-            // and then compare the password they entered to what's stored in the database.
-            // Since we can't do actual password matching on the client-side securely,
-            // this is just a placeholder to show the process.
-            let user = users.find(u => u.username === username);
-            if (user && user.password === password) {
-                console.log("Login successful", user);
-                // Proceed with login success actions (e.g., redirect or session token storage)
-                
-            } else {
-                console.log("Login failed: user not found or password mismatch");
-                // Handle login failure (e.g., display an error message)
-            }
+          if (users.length > 0 && users[0].Password === password) {
+            console.log("Login successful", users[0]);
+      
+            // Store user data in localStorage or sessionStorage
+            localStorage.setItem('user', JSON.stringify(users[0])); 
+      
+            // Redirect to the homepage
+            window.location.href = '../index.html';
+          } else {
+            console.log("Login failed: user not found or password mismatch");
+            // Handle login failure (e.g., display an error message)
+            alert("Login failed: user not found or password mismatch");
+          }
         })
         .catch((error) => {
-            console.error('Login error:', error);
+          console.error('Login error:', error);
         });
-    }
+      }
     
     // Add event listener to the login form
     document.querySelector('.login100-form').addEventListener('submit', loginUser);
@@ -120,3 +122,105 @@
     
 
 })(jQuery);
+
+document.getElementById('signup-link').addEventListener('click', function() {
+  document.querySelector('.wrap-login100').style.display = 'none'; // Hide login form
+  document.querySelector('.wrap-signup100').style.display = 'block'; // Show signup form
+});
+
+document.getElementById('login-link').addEventListener('click', function() {
+  document.querySelector('.wrap-signup100').style.display = 'none'; // Hide signup form
+  document.querySelector('.wrap-login100').style.display = 'block'; // Show login form
+});
+
+// Function to check if passwords match
+function passwordsMatch(password, confirmPassword) {
+  return password === confirmPassword;
+}
+
+// Function to check if the username is available
+function isUsernameAvailable(username, successCallback, errorCallback) {
+  fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      "x-apikey": "65c0999900d3da120a63a29b",
+      "cache-control": "no-cache"
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.length === 0) { // No user found with this username
+      successCallback();
+      console.log("Empty"); 
+    } else {
+      errorCallback('Username is already taken');
+    }
+  })
+  .catch(error => {
+    console.error('Error checking username availability:', error);
+  });
+}
+
+// Function to sign up a new user
+function signUpUser(username, password) {
+  const userData = {
+    User: username,
+    Password: password,
+    Points: 0
+  };
+
+  fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "x-apikey": "65c0999900d3da120a63a29b",
+      "cache-control": "no-cache"
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if(response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Failed to sign up');
+    }
+  })
+  .then(data => {
+    console.log('Signed up successfully', data);
+
+    // Store user data in localStorage or sessionStorage
+    localStorage.setItem('user', JSON.stringify(data));
+
+    // Redirect to the homepage
+    window.location.href = '../index.html'; 
+  })
+  .catch(error => {
+    console.error('Sign up error:', error);
+    alert("Error: Unable to sign up.");
+  });
+}
+
+// Add event listener to the sign-up form
+document.querySelector('.signup100-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+  
+  // Get the form data
+  const username = document.getElementsByName("signup-username")[0].value.trim(); 
+  const password = document.getElementsByName("signup-pass")[0].value.trim(); 
+  const confirmPassword = document.getElementsByName("signup-confirm-pass")[0].value.trim(); 
+  
+  // Check if passwords match
+  if(!passwordsMatch(password, confirmPassword)) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  // Check if username is available
+  isUsernameAvailable(username, function() {
+    // If available, sign up the user
+    signUpUser(username, password);
+  }, function(errorMessage) {
+    alert(errorMessage);
+  });
+});
