@@ -178,6 +178,7 @@ iframe {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-image: url('../images/login-background.jpg');
 }
 
 .wrap-login100 {
@@ -236,6 +237,10 @@ iframe {
   padding: 0 7px 0 43px;
 }
 
+/* Add some bottom margin to the password input container */
+.wrap-input100.validate-input {
+  margin-bottom: 20px; /* Adjust the value as needed */
+}
 
 /*---------------------------------------------*/
 .focus-input100 {
@@ -372,7 +377,6 @@ iframe {
   left: 0;
 }
 
-
 /*------------------------------------------------------------------
 [ Alert validate ]*/
 
@@ -439,7 +443,6 @@ iframe {
     opacity: 1;
   }
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ Social item ]*/

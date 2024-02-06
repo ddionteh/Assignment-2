@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="#">Products</a></li>
                 <li><a href="redeem.html">Redeem</a></li>
-                <li><a href="aichat.html">AI Chatbot</a></li>
                 <li><a href="cart.html">Cart</a></li>
                 <li><a href="login.html">Log In</a></li>
             </ul>

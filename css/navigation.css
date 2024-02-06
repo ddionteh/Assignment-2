@@ -82,6 +82,8 @@
     ul li a:hover::before {
         transform: scale(1, 1);
     }
+    
+    
     li a.active,
     li a:hover {
         color: #fff;
