@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accesories Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/navigation.css"/>
+    <link rel="stylesheet" href="../css/product.css" />
+  </head>
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      <!-- Header -->
+      <header>
+        <h1 class="page-title">T-Shirts</h1>
+      </header>
+
+      <!--filter section -->
+      <div class="filter-section">
+        <div class="sort-by">
+          <span>Sort by:</span>
+          <select id="sortSelect" onchange="sortBy(this.value)">
+            <option value="default">Default</option>
+            <option value="availability">Availability</option>
+            <option value="price">Price</option>
+          </select>
+        </div>
+
+        <div class="filter-by-gender">
+          <span>Filter by Gender:</span>
+          <select id="genderFilter" onchange="filterByGender(this.value)">
+            <option value="all">All</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+        <!-- Product Section -->
+        <h1>T-Shirts</h1>
+        <div class="products">
+          <div class="item">
+              <div class="items" data-gender="Women">
+                  <img src="https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/460914/item/goods_12_460914.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>Ultra Light Down Jacket</h3>
+                  <p>Premium down plus technology equals warmth and incredible lightness. In a short length for a balanced style.</p>
+                  <div class="rating">
+                      Star Rating: 4.0
+                  </div>
+                  <p class="price">$99.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Ultra Light Down Jacket')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Women">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/465467/item/sggoods_55_465467.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>Cotton Blend Parka</h3>
+                  <p>Water-repellent finish. Easy to coordinate with casual looks. Extra sizes for Black will be launched at a later date.</p>
+                  <div class="rating">
+                      Star Rating: 3.9
+                  </div>
+                  <p class="price">$59.90</p>
+                  <p class="availability">Out Of Stock</p>
+                  <button onclick="addToCart('Cotton Blend Parka')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Women">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/465469/item/sggoods_62_465469.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>Jersey Relaxed Jacket</h3>
+                  <p>Comfortable cut and fabric. Shorter length pairs well with any bottoms.</p>
+                  <div class="rating">
+                      Star Rating: 4.1
+                  </div>
+                  <p class="price">$49.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Jersey Relaxed Jacket')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Women">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/460920/item/sggoods_01_460920.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>Seamless Down Parka (Nanodesign)</h3>
+                  <p>High-performance, seamless down protects from rain and wind. Premium down, lightweight and warm.</p>
+                  <div class="rating">
+                      Star Rating: 4.8
+                  </div>
+                  <p class="price">$49.90</p>
+                  <p class="availability">Out Of Stock</p>
+                  <button onclick="addToCart('Seamless Down Parka (Nanodesign)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Women">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/456073/item/sggoods_32_456073.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>AirSense Jacket (Co-ord)</h3>
+                  <p>Lightweight, stretchy, and quick-drying. Amazingly comfortable. UPF50+.</p>
+                  <div class="rating">
+                      Star Rating: 4.5
+                  </div>
+                  <p class="price">$39.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('AirSense Jacket (Co-ord)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Women">   
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/467410/item/sggoods_60_467410.jpg?width=750" alt="Product Image"/>
+                  <div class="description">
+                  <h3>Pocketable UV Protection Parka (Patterned)</h3>
+                  <p>Lightweight, pocketable design for easy carrying. A high-performance parka for protection against sun and light rain. UPF50+.</p>
+                  <div class="rating">
+                      Star Rating: 3.2
+                  </div>
+                  <p class="price">$49.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Pocketable UV Protection Parka (Patterned)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Women">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/461808/item/sggoods_41_461808.jpg?width=750" alt="Product Image"/>
+                  <div class="description">
+                  <h3>Double Face Wrap Coat</h3>
+                  <p>Premium fabric for an elegant look. Adjust the belt to style it your way.</p>
+                  <div class="rating">
+                      Star Rating: 3.7
+                  </div>
+                  <p class="price">$39.90</p>
+                  <p class="availability">Out of Stock</p>
+                  <button onclick="addToCart('Double Face Wrap Coat')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Men">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/467536001/item/sggoods_69_467536001.jpg?width=750" alt="Product Image"/>
+                  <div class="description">
+                  <h3>Coach Jacket (Graphic) (Keith Haring)</h3>
+                  <p>This special collection focuses on the "SUBWAY DRAWINGS" that brought Keith Haring into the limelight.</p>
+                  <div class="rating">
+                      Star Rating: 4.6
+                  </div>
+                  <p class="price">$59.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Coach Jacket (Graphic) (Keith Haring)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Men">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/459621/item/sggoods_57_459621.jpg?width=750" alt="Product Image"/>
+                  <div class="description">
+                  <h3>Ultra Light Down Parka (3D Cut)</h3>
+                  <p>Warm premium down. Incredibly lightweight.</p>
+                  <div class="rating">
+                      Star Rating: 3.9
+                  </div>
+                  <p class="price">$99.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Ultra Light Down Parka (3D Cut)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Men">
+                  <img src="https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/450189/item/goods_09_450189.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>Sweat Long Sleeve Full-Zip Hoodie (Co-ord)</h3>
+                  <p>Updated with an improved texture on both sides, plus a lining that won’t shed fibers.</p>
+                  <div class="rating">
+                      Star Rating: 3.4
+                  </div>
+                  <p class="price">$49.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Sweat Long Sleeve Full-Zip Hoodie (Co-ord)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+              <div class="items" data-gender="Men">
+                  <img src="https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/461911/item/goods_32_461911.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>AirSense Jacket (Cotton Like)</h3>
+                  <p>Combines incredible comfort and performance. A versatile jacket with a natural feel.</p>
+                  <div class="rating">
+                      Star Rating: 3.8
+                  </div>
+                  <p class="price">$79.90</p>
+                  <p class="availability">Out of Stock</p>
+                  <button onclick="addToCart('AirSense Jacket (Cotton Like)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+    
+          <div class="item">
+              <div class="items" data-gender="Men">
+                  <img src="https://image.uniqlo.com/UQ/ST3/sg/imagesgoods/444557/item/sggoods_32_444557.jpg?width=750"alt="Product Image"/>
+                  <div class="description">
+                  <h3>Miracle Air Jacket (AirSense Jacket) (Cotton Like)</h3>
+                  <p>Lightweight, stretchy, and quick-drying fabric for incredible comfort. Sleek silhouette for any occasion.</p>
+                  <div class="rating">
+                      Star Rating: 4.2
+                  </div>
+                  <p class="price">$79.90</p>
+                  <p class="availability">In Stock</p>
+                  <button onclick="addToCart('Miracle Air Jacket (AirSense Jacket) (Cotton Like)')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+        <!-- Footer -->
+  <footer class="color-footer">
+    <div class="f-box">
+        <div class="content-box">
+            <h3>About Us</h3>
+            <p>At VogueValley, we believe that shopping should be more than just a transaction – it should be an experience. Our mission is to provide a seamless and enjoyable online shopping experience for customers of all tastes and preferences.</p>
+        </div>
+        <div class="content-box">
+            <h3>Business Hours</h3>
+            <p>
+                Monday - Sunday<br>
+                7am - 10pm
+            </p>
+            <p>You may call us anytime of the day at<br>
+               <a href="tel:+6512345678">+65 1234 5678</a>    
+            </p>
+        </div>
+        <div class="content-box1">
+            <h3>Quick Links</h3>
+            <button onclick="window.location.href='index.html'">Home</button>
+            <button onclick="window.location.href='aichat.html'">AI Chat</button>
+            <button onclick="window.location.href='redeem.html'">Redeem</button>
+            <button onclick="window.location.href='cart.html'">Shopping Cart</button>
+            <button onclick="window.location.href='login.html'">Login</button>
+            
+        </div>
+        <div class="image-box">
+            <h3>Connect</h3>
+            <a href="" target="_blank">
+                <img src="https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-logo-instagram-ini-ada-varias-dan-transparan-33.png" alt="Instagram">
+            </a>
+            <a href="" target="_blank">
+                <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/products.js" defer></script>
+<script src="../js/navigation.js"></script>
+
+
+</body>
+</html>
