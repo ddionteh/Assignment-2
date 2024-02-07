@@ -78,9 +78,6 @@
         var username = document.getElementsByName("username")[0].value.trim();
         var password = document.getElementsByName("pass")[0].value.trim();
       
-
-        console.log(username);
-        console.log(password);
         // Send a request to RestDB to retrieve the user data
         fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?', {
             method: 'GET',
@@ -99,10 +96,11 @@
         .then(users => {
           if (users.length > 0 && users[0].Password === password) {
             console.log("Login successful", users[0]);
-      
+            
             // Store user data in localStorage or sessionStorage
             localStorage.setItem('user', JSON.stringify(users[0])); 
-      
+            
+            alert("Successfully logged in as : " + users[0]);
             // Redirect to the homepage
             window.location.href = '../index.html';
           } else {
@@ -113,6 +111,7 @@
         })
         .catch((error) => {
           console.error('Login error:', error);
+          console.log("Error logging in!");
         });
       }
     
@@ -159,6 +158,7 @@ function isUsernameAvailable(username, successCallback, errorCallback) {
   })
   .catch(error => {
     console.error('Error checking username availability:', error);
+    alert("Error checking username availablity!");
   });
 }
 
@@ -188,7 +188,7 @@ function signUpUser(username, password) {
   })
   .then(data => {
     console.log('Signed up successfully', data);
-
+    alert("Successfully signed up as: " +  data.username)
     // Store user data in localStorage or sessionStorage
     localStorage.setItem('user', JSON.stringify(data));
 
