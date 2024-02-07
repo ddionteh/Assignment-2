@@ -1,0 +1,142 @@
+/*footer*/
+footer {
+  background-color: #1d1a39;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Flexbox for arranging content */
+.f-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+/* Style for content boxes */
+.content-box,
+.content-box1,
+.image-box {
+  flex: 1 1 25%; /* Four items per row on large screens */
+  max-width: 300px;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+/* Style for headings */
+h3 {
+  color: #ffffff;
+}
+
+/* Style for buttons */
+button {
+  background: #242048;
+  color: #a2b5cd;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+button:hover {
+  background: #000000;
+  opacity: 0.6;
+}
+
+/* Style for social icons */
+.image-box img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  transition: transform 0.6s ease;
+}
+
+.image-box img:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 620px) {
+  footer {
+    flex-direction: column;
+  }
+
+  footer.bottom {
+    flex-direction: column-reverse;
+  }
+
+  /* Adjust flex properties for smaller screens */
+  .content-box,
+  .content-box1,
+  .image-box {
+    flex: 1 1 50%; /* Two items per row on smaller screens */
+  }
+}
+
+/* Media query for larger screen sizes */
+@media (min-width: 620px) {
+  footer {
+    margin: 0 auto;
+    max-width: 100%;
+    display: flex; /* Ensure it's a flex container */
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+/* Styling for top section of footer */
+footer {
+  border-bottom: 2px solid #3a4f6a;
+  padding-bottom: 20px;
+}
+
+/* Styling for bottom section of footer */
+footer {
+  padding: 20px 0;
+  justify-content: space-between;
+}
+
+/* Styling for links */
+.links {
+  display: flex;
+  gap: 18px;
+}
+
+.links > a {
+  font-size: 24px;
+}
+
+/* Styling for legal information */
+.legal {
+  font-size: 12px;
+}
+
+.legal > a {
+  margin: 0 4px;
+}
+
+.legal > span {
+  margin-right: 10px;
+}
+
+/* Additional styling for smaller screen sizes */
+@media (max-width: 420px) {
+  footer {
+    text-align: center;
+    align-items: center;
+  }
+
+  footer.top .links {
+    grid-template-columns: 1fr;
+  }
+
+  footer.bottom {
+    align-items: center;
+  }
+
+  .legal > span {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 2px;
+  }
+}
