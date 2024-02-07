@@ -30,7 +30,7 @@
     }
 
     if (check) {
-      redirectToHomePage(); // If form validation is successful, redirect to home page
+      window.location.href = '../index.html';  // If form validation is successful, redirect to home page
     }
   });
 
@@ -69,11 +69,158 @@
   function hideValidate(input) {
     var thisAlert = $(input).parent();
 
-    $(thisAlert).removeClass("alert-validate");
+        $(thisAlert).removeClass('alert-validate');
+    }
+    
+    function loginUser(event) {
+        event.preventDefault(); // Prevent the default form submission
+    
+        var username = document.getElementsByName("username")[0].value.trim();
+        var password = document.getElementsByName("pass")[0].value.trim();
+      
+        // Send a request to RestDB to retrieve the user data
+        fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                "x-apikey": "65c0999900d3da120a63a29b",
+                "cache-control": "no-cache"
+            },
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(users => {
+          if (users.length > 0 && users[0].Password === password) {
+            console.log("Login successful", users[0]);
+            
+            // Store user data in localStorage or sessionStorage
+            localStorage.setItem('user', JSON.stringify(users[0])); 
+            
+            alert("Successfully logged in as : " + users[0]);
+            // Redirect to the homepage
+            window.location.href = '../index.html';
+          } else {
+            console.log("Login failed: user not found or password mismatch");
+            // Handle login failure (e.g., display an error message)
+            alert("Login failed: user not found or password mismatch");
+          }
+        })
+        .catch((error) => {
+          console.error('Login error:', error);
+          console.log("Error logging in!");
+        });
+      }
+    
+    // Add event listener to the login form
+    document.querySelector('.login100-form').addEventListener('submit', loginUser);
+    
+    
+
+})(jQuery);
+
+document.getElementById('signup-link').addEventListener('click', function() {
+  document.querySelector('.wrap-login100').style.display = 'none'; // Hide login form
+  document.querySelector('.wrap-signup100').style.display = 'block'; // Show signup form
+});
+
+document.getElementById('login-link').addEventListener('click', function() {
+  document.querySelector('.wrap-signup100').style.display = 'none'; // Hide signup form
+  document.querySelector('.wrap-login100').style.display = 'block'; // Show login form
+});
+
+// Function to check if passwords match
+function passwordsMatch(password, confirmPassword) {
+  return password === confirmPassword;
+}
+
+// Function to check if the username is available
+function isUsernameAvailable(username, successCallback, errorCallback) {
+  fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      "x-apikey": "65c0999900d3da120a63a29b",
+      "cache-control": "no-cache"
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.length === 0) { // No user found with this username
+      successCallback();
+      console.log("Empty"); 
+    } else {
+      errorCallback('Username is already taken');
+    }
+  })
+  .catch(error => {
+    console.error('Error checking username availability:', error);
+    alert("Error checking username availablity!");
+  });
+}
+
+// Function to sign up a new user
+function signUpUser(username, password) {
+  const userData = {
+    User: username,
+    Password: password,
+    Points: 0
+  };
+
+  fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "x-apikey": "65c0999900d3da120a63a29b",
+      "cache-control": "no-cache"
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if(response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Failed to sign up');
+    }
+  })
+  .then(data => {
+    console.log('Signed up successfully', data);
+    alert("Successfully signed up as: " +  data.username)
+    // Store user data in localStorage or sessionStorage
+    localStorage.setItem('user', JSON.stringify(data));
+
+    // Redirect to the homepage
+    window.location.href = '../index.html'; 
+  })
+  .catch(error => {
+    console.error('Sign up error:', error);
+    alert("Error: Unable to sign up.");
+  });
+}
+
+// Add event listener to the sign-up form
+document.querySelector('.signup100-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+  
+  // Get the form data
+  const username = document.getElementsByName("signup-username")[0].value.trim(); 
+  const password = document.getElementsByName("signup-pass")[0].value.trim(); 
+  const confirmPassword = document.getElementsByName("signup-confirm-pass")[0].value.trim(); 
+  
+  // Check if passwords match
+  if(!passwordsMatch(password, confirmPassword)) {
+    alert("Passwords do not match.");
+    return;
   }
 
-  function redirectToHomePage() {
-    // Redirect the user to the home page
-    window.location.href = "index.html";
-  }
-})(jQuery);
+  // Check if username is available
+  isUsernameAvailable(username, function() {
+    // If available, sign up the user
+    signUpUser(username, password);
+  }, function(errorMessage) {
+    alert(errorMessage);
+  });
+});

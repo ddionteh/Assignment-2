@@ -13,17 +13,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </label>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="redeem.html">Redeem</a></li>
-                <li><a href="aichat.html">AI Chatbot</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="login.html">Log In</a></li>
+            <li><a href="${isCurrentDirectory() ? 'index.html' : '../index.html'}">Home</a></li>
+            <li><a href="${isCurrentDirectory() ? 'html/product.html' : 'product.html'}">Products</a></li>
+            <li><a href="${isCurrentDirectory() ? 'html/redeem.html' : 'redeem.html'}">Redeem</a></li>
+            <li><a href="${isCurrentDirectory() ? 'html/cart.html' : 'cart.html'}">Cart</a></li>
+            <li><a href="${isCurrentDirectory() ? 'html/login.html' : 'login.html'}">Log In</a></li>
             </ul>
         </nav>
     `;
 
     document.body.insertBefore(header, document.body.firstChild);
 
-    // Here you can also include any JavaScript code needed for your navigation functionality.
+    // check the link based on directory 
+    function isCurrentDirectory() {
+        // Get the second last segment of the URL path
+        const pathSegments = window.location.pathname.split('/');
+        
+        // file is in html folder
+        if (pathSegments[pathSegments.length - 2] === "html") {
+            return false;
+        }
+        // file is not in html folder (index.html)
+        return true;
+    }    
 });
