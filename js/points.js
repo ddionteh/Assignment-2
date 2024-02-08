@@ -1,6 +1,6 @@
   // points.js
-  const API_KEY = '65c4b47ccb555e74ec4924d5'; // Replace with your actual RestDB API key
-  const BASE_URL = 'https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials';
+  const API_KEY = '65c4e3389ec8d460022d98b7'; // Replace with your actual RestDB API key
+  const BASE_URL = 'https://fedassignmentv2-62c5.restdb.io/rest/user-credentials';
   let lastClickTime = 0;
 
   // Helper function to get the user object from localStorage
@@ -25,6 +25,7 @@
     user.Points = newPoints;
     setUser(user);
 
+    console.log(user);
     // Then update in the database
     fetch(`${BASE_URL}/${user._id}`, {
       method: 'PUT',

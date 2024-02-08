@@ -19,17 +19,14 @@ function displayCart() {
 
     cartItemDiv.innerHTML = `
             <div class="product-info">
-                <img src="${item.image}" alt="${
-      item.name
+                <img src="${item.Image}" alt="${
+      item.Name
     }" class="Product Image">
                 <div class="product-details">
-                    <h3 class="product-name">${item.name}</h3>
-                    <p class="product-description">${item.description}</p>
-                    <div class="rating">
-                        Star Rating: ${item.rating}
-                    </div>
-                    <p class="product-price">$${item.price.toFixed(2)} x ${
-      item.quantity
+                    <h3 class="product-name">${item.Name}</h3>
+                    <p class="product-description">${item.Description}</p>
+                    <p class="product-price">$${item.Price.toFixed(2)} x ${
+      item.Quantity
     }</p>
                     <button onclick="removeFromCart(${index})">Remove</button>
                 </div>
@@ -38,7 +35,7 @@ function displayCart() {
 
     cartItemsContainer.appendChild(cartItemDiv);
 
-    total += item.price * item.quantity;
+    total += item.Price * item.Quantity;
   });
 
   const totalDiv = document.createElement("div");
@@ -51,8 +48,8 @@ function displayCart() {
 function removeFromCart(index) {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  if (cartItems[index].quantity > 1) {
-    cartItems[index].quantity--;
+  if (cartItems[index].Quantity > 1) {
+    cartItems[index].Quantity--;
   } else {
     cartItems.splice(index, 1);
   }

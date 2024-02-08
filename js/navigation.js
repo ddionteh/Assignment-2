@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <ul>
             <li><a href="${isCurrentDirectory() ? 'index.html' : '../index.html'}">Home</a></li>
             <li><a href="${isCurrentDirectory() ? 'html/product.html' : 'product.html'}">Products</a></li>
-            <li><a href="${isCurrentDirectory() ? 'html/redeem.html' : 'redeem.html'}">Redeem</a></li>
             <li><a href="${isCurrentDirectory() ? 'html/cart.html' : 'cart.html'}">Cart</a></li>
             <li><a href="${isCurrentDirectory() ? 'html/login.html' : 'login.html'}">Log In</a></li>
             <li id="points-display"></li>

@@ -79,11 +79,11 @@
         var password = document.getElementsByName("pass")[0].value.trim();
       
         // Send a request to RestDB to retrieve the user data
-        fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+        fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "x-apikey": "65c4b47ccb555e74ec4924d5",
+                "x-apikey": "65c4e3389ec8d460022d98b7",
                 "cache-control": "no-cache"
             },
         })
@@ -100,7 +100,7 @@
             // Store user data in localStorage or sessionStorage
             localStorage.setItem('user', JSON.stringify(users[0])); 
             
-            alert("Successfully logged in as : " + users[0]);
+            alert("Successfully logged in as : " + users[0].User);
             // Redirect to the homepage
             window.location.href = '../index.html';
           } else {
@@ -139,14 +139,14 @@ function passwordsMatch(password, confirmPassword) {
 
 // Function to check if the username is available
 function isUsernameAvailable(username, successCallback, errorCallback) {
-  fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+  fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c4b47ccb555e74ec4924d5",
+      "x-apikey": "65c4e3389ec8d460022d98b7",
       "cache-control": "no-cache"
     }
-  )
+})
     .then((response) => response.json())
     .then((data) => {
       if (data.length === 0) {
@@ -171,11 +171,11 @@ function signUpUser(username, password) {
     Points: 0,
   };
 
-  fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials', {
+  fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c4b47ccb555e74ec4924d5",
+      "x-apikey": "65c4e3389ec8d460022d98b7",
       "cache-control": "no-cache"
     },
     body: JSON.stringify(userData),

@@ -150,3 +150,71 @@ body {
   font-weight: bold;
   margin-left: 20px;
 }
+
+.expanded-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  z-index: 1000; /* Above other content */
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.expanded-card-content {
+  position: relative;
+}
+
+.close-expanded-card {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.expanded-product-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.add-to-cart-btn {
+  background-color: #5cb85c; /* A green shade that stands out */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.add-to-cart-btn:hover {
+  transform: scale(1.05); /* Slightly enlarge the button */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .expanded-card {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .expanded-card {
+    width: 60%;
+  }
+}

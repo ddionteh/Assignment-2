@@ -50,7 +50,7 @@ function createContentBox(title, content) {
 function createLinks() {
   var links = document.createElement("div");
   links.classList.add("links");
-  var linkNames = ["Home", "AI Chat", "Redeem", "Shopping Cart", "Login"];
+  var linkNames = ["Home", "AI Chat", "Shopping Cart", "Login"];
   linkNames.forEach(function (name) {
     var link = document.createElement("a");
     link.textContent = name;
