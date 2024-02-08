@@ -170,11 +170,11 @@ function signUpUser(username, password) {
     Points: 0
   };
 
-  fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials', {
+  fetch('https://fedassignmentv2-a543.restdb.io/rest/user-credentials', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c0999900d3da120a63a29b",
+      "x-apikey": "65c39896c4f5c2ad3b12406d",
       "cache-control": "no-cache"
     },
     body: JSON.stringify(userData)
