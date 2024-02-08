@@ -171,7 +171,7 @@ function signUpUser(username, password) {
     Points: 0,
   };
 
-  fetch('https://fedassignmentv2-62c9.restdb.io/rest/user-credentials', {
+  fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
