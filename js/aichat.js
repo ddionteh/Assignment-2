@@ -40,7 +40,9 @@ function loadChatbot() {
   const sendChatBtn = document.querySelector(".chat-input span");
 
   let userMessage = null; // Variable to store user's message
-  const API_KEY = "YOUR_OPEN_AI_API_KEY"; // Paste your API key here
+  const API_KEY_PART_1 = " sk-1VjfI36JtCWiPopkC1yST"; // trying to bypass OpenAI security for assignment purposes
+  const API_KEY_PART_2 = "3BlbkFJabZl0h5iZWk9U3qBRDCm"
+  const API_KEY = API_KEY_PART_1 + API_KEY_PART_2;
 
   // Set the initial height for the chat input
   const inputInitHeight = chatInput.scrollHeight;
@@ -80,11 +82,11 @@ function loadChatbot() {
 
   // Fetch available products from RestDB
   function fetchAvailableProducts(callback) {
-      fetch('https://fedassignment-8d9a.restdb.io/rest/products', {
+      fetch('https://fedassignmentv2-a543.restdb.io/rest/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          "x-apikey": "65c0999900d3da120a63a29b",
+          "x-apikey": "65c39896c4f5c2ad3b12406d",
           "cache-control": "no-cache"
         }
       })

@@ -79,11 +79,11 @@
         var password = document.getElementsByName("pass")[0].value.trim();
       
         // Send a request to RestDB to retrieve the user data
-        fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?', {
+        fetch('https://fedassignmentv2-a543.restdb.io/rest/user-credentials', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "x-apikey": "65c0999900d3da120a63a29b",
+                "x-apikey": "65c39896c4f5c2ad3b12406d",
                 "cache-control": "no-cache"
             },
         })
@@ -139,11 +139,11 @@ function passwordsMatch(password, confirmPassword) {
 
 // Function to check if the username is available
 function isUsernameAvailable(username, successCallback, errorCallback) {
-  fetch('https://fedassignment-8d9a.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+  fetch('https://fedassignmentv2-a543.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c0999900d3da120a63a29b",
+      "x-apikey": "65c39896c4f5c2ad3b12406d",
       "cache-control": "no-cache"
     }
   })
