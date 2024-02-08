@@ -30,7 +30,7 @@
     }
 
     if (check) {
-      window.location.href = '../index.html';  // If form validation is successful, redirect to home page
+      window.location.href = "../index.html"; // If form validation is successful, redirect to home page
     }
   });
 
@@ -122,14 +122,14 @@
 
 })(jQuery);
 
-document.getElementById('signup-link').addEventListener('click', function() {
-  document.querySelector('.wrap-login100').style.display = 'none'; // Hide login form
-  document.querySelector('.wrap-signup100').style.display = 'block'; // Show signup form
+document.getElementById("signup-link").addEventListener("click", function () {
+  document.querySelector(".wrap-login100").style.display = "none"; // Hide login form
+  document.querySelector(".wrap-signup100").style.display = "block"; // Show signup form
 });
 
-document.getElementById('login-link').addEventListener('click', function() {
-  document.querySelector('.wrap-signup100').style.display = 'none'; // Hide signup form
-  document.querySelector('.wrap-login100').style.display = 'block'; // Show login form
+document.getElementById("login-link").addEventListener("click", function () {
+  document.querySelector(".wrap-signup100").style.display = "none"; // Hide signup form
+  document.querySelector(".wrap-login100").style.display = "block"; // Show login form
 });
 
 // Function to check if passwords match
@@ -146,20 +146,21 @@ function isUsernameAvailable(username, successCallback, errorCallback) {
       "x-apikey": "65c4b47ccb555e74ec4924d5",
       "cache-control": "no-cache"
     }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if(data.length === 0) { // No user found with this username
-      successCallback();
-      console.log("Empty"); 
-    } else {
-      errorCallback('Username is already taken');
-    }
-  })
-  .catch(error => {
-    console.error('Error checking username availability:', error);
-    alert("Error checking username availablity!");
-  });
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length === 0) {
+        // No user found with this username
+        successCallback();
+        console.log("Empty");
+      } else {
+        errorCallback("Username is already taken");
+      }
+    })
+    .catch((error) => {
+      console.error("Error checking username availability:", error);
+      alert("Error checking username availablity!");
+    });
 }
 
 // Function to sign up a new user
@@ -167,7 +168,7 @@ function signUpUser(username, password) {
   const userData = {
     User: username,
     Password: password,
-    Points: 0
+    Points: 0,
   };
 
   fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials', {
@@ -177,7 +178,7 @@ function signUpUser(username, password) {
       "x-apikey": "65c4b47ccb555e74ec4924d5",
       "cache-control": "no-cache"
     },
-    body: JSON.stringify(userData)
+    body: JSON.stringify(userData),
   })
   .then(response => {
     if(response.ok) {
@@ -192,35 +193,45 @@ function signUpUser(username, password) {
     // Store user data in localStorage or sessionStorage
     localStorage.setItem('user', JSON.stringify(data));
 
-    // Redirect to the homepage
-    window.location.href = '../index.html'; 
-  })
-  .catch(error => {
-    console.error('Sign up error:', error);
-    alert("Error: Unable to sign up.");
-  });
+      // Redirect to the homepage
+      window.location.href = "../index.html";
+    })
+    .catch((error) => {
+      console.error("Sign up error:", error);
+      alert("Error: Unable to sign up.");
+    });
 }
 
 // Add event listener to the sign-up form
-document.querySelector('.signup100-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
-  
-  // Get the form data
-  const username = document.getElementsByName("signup-username")[0].value.trim(); 
-  const password = document.getElementsByName("signup-pass")[0].value.trim(); 
-  const confirmPassword = document.getElementsByName("signup-confirm-pass")[0].value.trim(); 
-  
-  // Check if passwords match
-  if(!passwordsMatch(password, confirmPassword)) {
-    alert("Passwords do not match.");
-    return;
-  }
+document
+  .querySelector(".signup100-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
 
-  // Check if username is available
-  isUsernameAvailable(username, function() {
-    // If available, sign up the user
-    signUpUser(username, password);
-  }, function(errorMessage) {
-    alert(errorMessage);
+    // Get the form data
+    const username = document
+      .getElementsByName("signup-username")[0]
+      .value.trim();
+    const password = document.getElementsByName("signup-pass")[0].value.trim();
+    const confirmPassword = document
+      .getElementsByName("signup-confirm-pass")[0]
+      .value.trim();
+
+    // Check if passwords match
+    if (!passwordsMatch(password, confirmPassword)) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    // Check if username is available
+    isUsernameAvailable(
+      username,
+      function () {
+        // If available, sign up the user
+        signUpUser(username, password);
+      },
+      function (errorMessage) {
+        alert(errorMessage);
+      }
+    );
   });
-});

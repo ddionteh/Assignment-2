@@ -3,8 +3,6 @@ const categoryMap = new Map();
 const genderMap = new Map();
 const availabilityMap = new Map();
 
-
-
 // Define price ranges
 const priceRangeMap = new Map([
   ["$0 - $15", { min: 0, max: 15, products: [] }],
@@ -16,7 +14,8 @@ const priceRangeMap = new Map([
   // Add more ranges as needed
 ]);
 
-document.addEventListener('DOMContentLoaded', async () => { // Mark this function as async
+document.addEventListener("DOMContentLoaded", async () => {
+  // Mark this function as async
   await fetchProducts(); // Wait for fetchProducts to complete
 
   // Now that fetchProducts has completed, you can safely attach event listeners to checkboxes
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Mark this functio
     checkbox.addEventListener('change', applyFilters);
   });
 });
-
 
 // Fetch products from the API and store in allProducts
 // Function to fetch products from RESTDB API
@@ -36,21 +34,21 @@ async function fetchProducts() {
         'Content-Type': 'application/json',
         'x-apikey': '65c4b47ccb555e74ec4924d5',
       }
-    });
+    );
 
-    if (!response.ok) throw new Error('Network response was not ok');
+    if (!response.ok) throw new Error("Network response was not ok");
 
     const products = await response.json();
-    
+
     allProducts = products;
-    products.forEach(product => {
+    products.forEach((product) => {
       // Check if the category already exists in the map
       if (!categoryMap.has(product.Category)) {
         categoryMap.set(product.Category, []);
       }
       // Add the product to the corresponding category array
       categoryMap.get(product.Category).push(product);
-      
+
       // Check if the gender already exists in the map
       if (!genderMap.has(product.Gender)) {
         genderMap.set(product.Gender, []);
@@ -73,46 +71,45 @@ async function fetchProducts() {
     addClickEventListenersToProductCards();
     console.log("CHCEKING");
     return;
-
   } catch (error) {
-    console.error('There has been a problem with your fetch operation:', error);
+    console.error("There has been a problem with your fetch operation:", error);
   }
 }
 
 // Dynamically create checkboxes for filtering
 function createFilterCheckboxes() {
   // Assume you have a div with id 'filters' in your HTML to hold the checkboxes
-  const filtersDiv = document.getElementById('filters');
+  const filtersDiv = document.getElementById("filters");
 
   // Create checkboxes for categories
   for (let category of categoryMap.keys()) {
-    let checkbox = createCheckbox(category, 'category');
+    let checkbox = createCheckbox(category, "category");
     filtersDiv.appendChild(checkbox);
   }
-  
+
   // Create checkboxes for genders
   for (let gender of genderMap.keys()) {
-    let checkbox = createCheckbox(gender, 'gender');
+    let checkbox = createCheckbox(gender, "gender");
     filtersDiv.appendChild(checkbox);
   }
-  
+
   // Create checkboxes for availability
   for (let availability of availabilityMap.keys()) {
-    let checkbox = createCheckbox(availability, 'availability');
+    let checkbox = createCheckbox(availability, "availability");
     filtersDiv.appendChild(checkbox);
   }
 }
 
 // Helper function to create a checkbox element
 function createCheckbox(value, name) {
-  let container = document.createElement('div');
-  let checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
+  let container = document.createElement("div");
+  let checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
   checkbox.value = value;
   checkbox.id = value;
   checkbox.name = name;
 
-  let label = document.createElement('label');
+  let label = document.createElement("label");
   label.htmlFor = value;
   label.textContent = value;
 
@@ -123,32 +120,59 @@ function createCheckbox(value, name) {
 }
 // Create price range checkboxes correctly using priceRangeMap
 function createPriceRangeCheckboxes() {
-  const priceFilterDiv = document.getElementById('price-filters');
+  const priceFilterDiv = document.getElementById("price-filters");
 
   priceRangeMap.forEach((value, label) => {
-    let checkbox = createCheckbox(label, 'price'); // Use the label for the checkbox
-    checkbox.querySelector('input').setAttribute('data-min', value.min);
-    checkbox.querySelector('input').setAttribute('data-max', value.max);
+    let checkbox = createCheckbox(label, "price"); // Use the label for the checkbox
+    checkbox.querySelector("input").setAttribute("data-min", value.min);
+    checkbox.querySelector("input").setAttribute("data-max", value.max);
     priceFilterDiv.appendChild(checkbox);
   });
 }
 
 function applyFilters() {
-  const selectedCategories = new Set([...document.querySelectorAll('input[name="category"]:checked')].map(el => el.value));
-  const selectedGenders = new Set([...document.querySelectorAll('input[name="gender"]:checked')].map(el => el.value));
-  const selectedAvailabilities = new Set([...document.querySelectorAll('input[name="availability"]:checked')].map(el => el.value));
-  const selectedPriceRanges = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(checkbox => ({
+  const selectedCategories = new Set(
+    [...document.querySelectorAll('input[name="category"]:checked')].map(
+      (el) => el.value
+    )
+  );
+  const selectedGenders = new Set(
+    [...document.querySelectorAll('input[name="gender"]:checked')].map(
+      (el) => el.value
+    )
+  );
+  const selectedAvailabilities = new Set(
+    [...document.querySelectorAll('input[name="availability"]:checked')].map(
+      (el) => el.value
+    )
+  );
+  const selectedPriceRanges = Array.from(
+    document.querySelectorAll('input[name="price"]:checked')
+  ).map((checkbox) => ({
     min: Number(checkbox.dataset.min),
-    max: Number(checkbox.dataset.max)
+    max: Number(checkbox.dataset.max),
   }));
 
-  let filteredProducts = allProducts.filter(product => {
-    const inSelectedCategory = selectedCategories.size === 0 || selectedCategories.has(product.Category);
-    const inSelectedGender = selectedGenders.size === 0 || selectedGenders.has(product.Gender);
-    const inSelectedAvailability = selectedAvailabilities.size === 0 || selectedAvailabilities.has(product.Availability);
-    const inSelectedPriceRange = selectedPriceRanges.length === 0 || selectedPriceRanges.some(range => product.Price > range.min && product.Price <= range.max);
+  let filteredProducts = allProducts.filter((product) => {
+    const inSelectedCategory =
+      selectedCategories.size === 0 || selectedCategories.has(product.Category);
+    const inSelectedGender =
+      selectedGenders.size === 0 || selectedGenders.has(product.Gender);
+    const inSelectedAvailability =
+      selectedAvailabilities.size === 0 ||
+      selectedAvailabilities.has(product.Availability);
+    const inSelectedPriceRange =
+      selectedPriceRanges.length === 0 ||
+      selectedPriceRanges.some(
+        (range) => product.Price > range.min && product.Price <= range.max
+      );
 
-    return inSelectedCategory && inSelectedGender && inSelectedAvailability && inSelectedPriceRange;
+    return (
+      inSelectedCategory &&
+      inSelectedGender &&
+      inSelectedAvailability &&
+      inSelectedPriceRange
+    );
   });
   console.log(filteredProducts);
   updateProductDisplay(filteredProducts);
@@ -156,14 +180,16 @@ function applyFilters() {
 
 function updateProductDisplay(filteredProducts) {
   // Assuming each product card has a unique identifier such as a `data-id` attribute
-  const cards = document.querySelectorAll('.product-card');
-  cards.forEach(card => card.style.display = 'none'); // Hide all cards initially
+  const cards = document.querySelectorAll(".product-card");
+  cards.forEach((card) => (card.style.display = "none")); // Hide all cards initially
 
   // Now, loop through all filtered products and set display to block
-  filteredProducts.forEach(product => {
-    const productCard = document.querySelector(`.product-card[data-id="${product.ProductID}"]`); // Use the unique identifier to find the card
+  filteredProducts.forEach((product) => {
+    const productCard = document.querySelector(
+      `.product-card[data-id="${product.ProductID}"]`
+    ); // Use the unique identifier to find the card
     if (productCard) {
-      productCard.style.display = 'block';
+      productCard.style.display = "block";
     }
   });
 }
@@ -185,21 +211,30 @@ function createProductCard(product) {
   // Append elements to card
   card.appendChild(image);
 
-  const name = document.createElement('h3');
+  const name = document.createElement("h3");
   name.textContent = product.Name;
-  
-  const description = document.createElement('p');
-  description.textContent = product.Description.length > 100 ? product.Description.substring(0, 97) + '...' : product.Description;
-  
-  const price = document.createElement('p');
-  price.textContent = `$${product.Price}`;
-  card.setAttribute('data-price', product.Price); // Store the product's price as a data attribute
 
-  card.setAttribute('data-id', product.ProductID);
-  
-  const stockStatus = document.createElement('p');
+  const description = document.createElement("p");
+  description.textContent =
+    product.Description.length > 100
+      ? product.Description.substring(0, 97) + "..."
+      : product.Description;
+
+  const price = document.createElement("p");
+  price.textContent = `$${product.Price}`;
+  card.setAttribute("data-price", product.Price); // Store the product's price as a data attribute
+
+  card.setAttribute("data-id", product.ProductID);
+
+  const stockStatus = document.createElement("p");
   stockStatus.textContent = product.Availability;
-  
+  stockStatus.className = `card-availability ${product.Availability.toLowerCase().replace(
+    " ",
+    "-"
+  )}`;
+  // Example class name: card-availability out-of-stock
+  card.appendChild(stockStatus);
+
   // Append elements to card
   card.appendChild(image);
   card.appendChild(name);
