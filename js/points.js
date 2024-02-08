@@ -1,6 +1,6 @@
   // points.js
-  const API_KEY = '65c4e3389ec8d460022d98b7'; // Replace with your actual RestDB API key
-  const BASE_URL = 'https://fedassignmentv2-62c5.restdb.io/rest/user-credentials';
+  const API_KEY = '65c0999900d3da120a63a29b	'; // Replace with your actual RestDB API key
+  const BASE_URL = 'https://fedassignmentv2-8d9a.restdb.io/rest/user-credentials';
   let lastClickTime = 0;
 
   // Helper function to get the user object from localStorage

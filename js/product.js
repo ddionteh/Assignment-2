@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Function to fetch products from RESTDB API
 async function fetchProducts() {
   try {
-    const response = await fetch('https://fedassignmentv2-62c5.restdb.io/rest/products', {
+    const response = await fetch('https://fedassignmentv2-8d9a.restdb.io/rest/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'x-apikey': '65c4e3389ec8d460022d98b7',
+        'x-apikey': '65c0999900d3da120a63a29b	',
       }
   });
 
