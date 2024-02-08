@@ -180,18 +180,18 @@ function signUpUser(username, password) {
     },
     body: JSON.stringify(userData),
   })
-  .then(response => {
-    if(response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Failed to sign up');
-    }
-  })
-  .then(data => {
-    console.log('Signed up successfully', data);
-    alert("Successfully signed up as: " +  data.User)
-    // Store user data in localStorage or sessionStorage
-    localStorage.setItem('user', JSON.stringify(data));
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to sign up");
+      }
+    })
+    .then((data) => {
+      console.log("Signed up successfully", data);
+      alert("Successfully signed up as: " + data.User);
+      // Store user data in localStorage or sessionStorage
+      localStorage.setItem("user", JSON.stringify(data));
 
       // Redirect to the homepage
       window.location.href = "../index.html";

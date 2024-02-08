@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchProducts(); // Wait for fetchProducts to complete
 
   // Now that fetchProducts has completed, you can safely attach event listeners to checkboxes
-  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', applyFilters);
+  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilters);
   });
 });
 
@@ -197,7 +197,7 @@ function updateProductDisplay(filteredProducts) {
 // Function to create a product card (you will need to define the HTML structure of a card)
 function createProductCard(product) {
   // Create card elements and fill with product data
-  const cardContainer = document.getElementById('card-container');
+  const cardContainer = document.getElementById("card-container");
   console.log("testing");
   const card = document.createElement('div');
   card.className = 'product-card';

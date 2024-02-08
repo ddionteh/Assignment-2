@@ -53,8 +53,13 @@ function createLinks() {
   var linkNames = ["Home", "AI Chat", "Shopping Cart", "Login"];
   linkNames.forEach(function (name) {
     var link = document.createElement("a");
-    link.textContent = name;
-    link.href = name.toLowerCase().replace(" ", "") + ".html";
+    if (name === "Home") {
+      link.textContent = name;
+      link.href = "../index.html"; // Set the href to index.html for the "Home" link
+    } else {
+      link.textContent = name;
+      link.href = name.toLowerCase().replace(" ", "") + ".html";
+    }
     links.appendChild(link);
   });
   return links;
