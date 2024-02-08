@@ -1,3 +1,4 @@
+
 // navigation menu
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.createElement('header');
@@ -18,12 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
             <li><a href="${isCurrentDirectory() ? 'html/redeem.html' : 'redeem.html'}">Redeem</a></li>
             <li><a href="${isCurrentDirectory() ? 'html/cart.html' : 'cart.html'}">Cart</a></li>
             <li><a href="${isCurrentDirectory() ? 'html/login.html' : 'login.html'}">Log In</a></li>
+            <li id="points-display"></li>
+
             </ul>
         </nav>
     `;
 
     document.body.insertBefore(header, document.body.firstChild);
-
+    
     // check the link based on directory 
     function isCurrentDirectory() {
         // Get the second last segment of the URL path
@@ -35,5 +38,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         // file is not in html folder (index.html)
         return true;
-    }    
+    }
+
+    // Add click event listeners to navigation links
+    document.querySelectorAll('nav ul li a').forEach(href => {
+        href.addEventListener('click', handleNavClick);
+    });
+});
+
+// Update the navigation points display when points change.
+function updatePointsDisplay(points) {
+  const pointsDisplay = document.getElementById('points-display');
+  if (pointsDisplay) {
+    pointsDisplay.textContent = `Points: ${points}`;
+  }
+}
+
+// Function to handle navigation link clicks
+function handleNavClick(event) {
+  incrementPoints(updatePointsDisplay);
+}
+
+// Call updatePointsDisplay on page load to show the current points
+document.addEventListener('DOMContentLoaded', () => {
+  const user = getUser();
+
+  console.log(user);
+  if (user) {
+    updatePointsDisplay(user.Points);
+  }
 });

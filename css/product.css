@@ -204,6 +204,11 @@ body, html {
   cursor: pointer;
 }
 
+#user-points {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
 
 /* Add more styles as needed for your product cards and layout */
 

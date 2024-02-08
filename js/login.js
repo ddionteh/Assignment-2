@@ -79,11 +79,11 @@
         var password = document.getElementsByName("pass")[0].value.trim();
       
         // Send a request to RestDB to retrieve the user data
-        fetch('https://fedassignmentv2-a543.restdb.io/rest/user-credentials', {
+        fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "x-apikey": "65c39896c4f5c2ad3b12406d",
+                "x-apikey": "65c4b47ccb555e74ec4924d5",
                 "cache-control": "no-cache"
             },
         })
@@ -139,11 +139,11 @@ function passwordsMatch(password, confirmPassword) {
 
 // Function to check if the username is available
 function isUsernameAvailable(username, successCallback, errorCallback) {
-  fetch('https://fedassignmentv2-a543.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+  fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c39896c4f5c2ad3b12406d",
+      "x-apikey": "65c4b47ccb555e74ec4924d5",
       "cache-control": "no-cache"
     }
   })
@@ -170,11 +170,11 @@ function signUpUser(username, password) {
     Points: 0
   };
 
-  fetch('https://fedassignmentv2-a543.restdb.io/rest/user-credentials', {
+  fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c39896c4f5c2ad3b12406d",
+      "x-apikey": "65c4b47ccb555e74ec4924d5",
       "cache-control": "no-cache"
     },
     body: JSON.stringify(userData)
@@ -188,7 +188,7 @@ function signUpUser(username, password) {
   })
   .then(data => {
     console.log('Signed up successfully', data);
-    alert("Successfully signed up as: " +  data.username)
+    alert("Successfully signed up as: " +  data.User)
     // Store user data in localStorage or sessionStorage
     localStorage.setItem('user', JSON.stringify(data));
 

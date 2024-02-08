@@ -18,15 +18,11 @@ const priceRangeMap = new Map([
 
 document.addEventListener('DOMContentLoaded', async () => { // Mark this function as async
   await fetchProducts(); // Wait for fetchProducts to complete
-  console.log("OMDSA");
 
   // Now that fetchProducts has completed, you can safely attach event listeners to checkboxes
   document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    console.log("omg");
     checkbox.addEventListener('change', applyFilters);
   });
-
-  console.log("Sucas");
 });
 
 
@@ -34,11 +30,11 @@ document.addEventListener('DOMContentLoaded', async () => { // Mark this functio
 // Function to fetch products from RESTDB API
 async function fetchProducts() {
   try {
-    const response = await fetch('https://fedassignmentv2-4ad8.restdb.io/rest/products', {
+    const response = await fetch('https://fedassignmentv2-cd2d.restdb.io/rest/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'x-apikey': '65c48740c2b4fe7bff13a228',
+        'x-apikey': '65c4b47ccb555e74ec4924d5',
       }
     });
 
@@ -74,7 +70,8 @@ async function fetchProducts() {
 
     createFilterCheckboxes();
     createPriceRangeCheckboxes();
-    console.log("success");
+    addClickEventListenersToProductCards();
+    console.log("CHCEKING");
     return;
 
   } catch (error) {
@@ -136,48 +133,6 @@ function createPriceRangeCheckboxes() {
   });
 }
 
-
-// function categorizeProductByPrice(product) {
-//   for (let [label, range] of priceRangeMap.entries()) {
-//     if (product.Price > range.min && product.Price <= range.max) {
-//       range.products.push(product);
-//       break; // Assuming a product only fits into one range, stop once matched
-//     }
-//   }
-// }
-
-// // This function updates the display of product cards based on filters
-// function applyFilters() {
-//   const selectedCategories = new Set(
-//     Array.from(document.querySelectorAll('input[name="category"]:checked'), checkbox => checkbox.value)
-//   );
-//   const selectedGenders = new Set(
-//     Array.from(document.querySelectorAll('input[name="gender"]:checked'), checkbox => checkbox.value)
-//   );
-//   const selectedAvailabilities = new Set(
-//     Array.from(document.querySelectorAll('input[name="availability"]:checked'), checkbox => checkbox.value)
-//   );
-
-//   // Gather all selected price ranges
-//   const selectedPriceRanges = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(checkbox => ({
-//     min: Number(checkbox.getAttribute('data-min')),
-//     max: Number(checkbox.getAttribute('data-max'))
-//   }));
-
-//   // Filter products based on the selected categories, genders, availabilities, and price ranges
-//   const filteredProducts = allProducts.filter(product => {
-//     const categoryMatch = selectedCategories.size === 0 || selectedCategories.has(product.Category);
-//     const genderMatch = selectedGenders.size === 0 || selectedGenders.has(product.Gender);
-//     const availabilityMatch = selectedAvailabilities.size === 0 || selectedAvailabilities.has(product.Availability);
-//     const priceMatch = selectedPriceRanges.length === 0 || selectedPriceRanges.some(range => product.Price >= range.min && product.Price <= range.max);
-
-//     return categoryMatch && genderMatch && availabilityMatch && priceMatch;
-//   });
-
-//   // Update display with filtered products
-//   updateProductDisplay(filteredProducts);
-// }
-
 function applyFilters() {
   const selectedCategories = new Set([...document.querySelectorAll('input[name="category"]:checked')].map(el => el.value));
   const selectedGenders = new Set([...document.querySelectorAll('input[name="gender"]:checked')].map(el => el.value));
@@ -210,8 +165,6 @@ function updateProductDisplay(filteredProducts) {
     if (productCard) {
       productCard.style.display = 'block';
     }
-
-    console.log("TRIE");
   });
 }
 
@@ -219,10 +172,10 @@ function updateProductDisplay(filteredProducts) {
 function createProductCard(product) {
   // Create card elements and fill with product data
   const cardContainer = document.getElementById('card-container');
-
+  console.log("testing");
   const card = document.createElement('div');
   card.className = 'product-card';
-  
+  card.setAttribute('onclick', `window.location.href='product.html?id=${product.ProductID}'`);
   const image = document.createElement('img');
 
   // Construct the image URL directly using the provided 'Image' property
@@ -256,114 +209,7 @@ function createProductCard(product) {
 
   // Append card to card container
   cardContainer.appendChild(card);
+
+  
   return card;
 }
-
-// function displayProducts() {
-//   const products = document.querySelectorAll('#card-container .product-card'); // Assuming each card has a class `.product-card`
-//   const checkboxes = document.querySelectorAll('#price-filters input[type="checkbox"]:checked');
-  
-//   // If no checkbox is selected, make all products visible
-//   if (checkboxes.length === 0) {
-//       products.forEach(product => {
-//           product.style.display = "";
-//       });
-//   } else {
-//       // Hide or show products based on the price attribute
-//       products.forEach(product => {
-//           const price = parseInt(product.getAttribute('data-price'), 10); // Assuming each card has a `data-price` attribute
-
-//           // Show or hide the product card based on its price
-//           if (price >= lowerBound && price <= upperBound) {
-//               product.style.display = ""; // Show
-//           } else {
-//               product.style.display = "none"; // Hide
-//           }
-//       });
-//   }
-// }
-// // Clear the current products and display the new filtered products
-// function updateProductDisplay(filteredProducts) {
-//   const cardContainer = document.getElementById('card-container');
-//   cardContainer.innerHTML = ''; // Clear existing cards
-
-//   filteredProducts.forEach(product => {
-//     cardContainer.appendChild(createProductCard(product)); 
-//   });
-// }
-
-
-// // Apply filters and update product display
-// function applyFilters() {
-//   let filteredProducts = allProducts;
-
-//   // Filter by category
-//   let selectedCategories = new Set();
-//   document.querySelectorAll('input[name="category"]:checked').forEach(checkbox => {
-//     selectedCategories.add(checkbox.value);
-//   });
-//   if (selectedCategories.size > 0) {
-//     filteredProducts = filteredProducts.filter(product => selectedCategories.has(product.Category));
-//   }
-
-//   // Filter by gender
-//   let selectedGenders = new Set();
-//   document.querySelectorAll('input[name="gender"]:checked').forEach(checkbox => {
-//     selectedGenders.add(checkbox.value);
-//   });
-//   if (selectedGenders.size > 0) {
-//     filteredProducts = filteredProducts.filter(product => selectedGenders.has(product.Gender));
-//   }
-
-//   // Filter by availability
-//   let selectedAvailabilities = new Set();
-//   document.querySelectorAll('input[name="availability"]:checked').forEach(checkbox => {
-//     selectedAvailabilities.add(checkbox.value);
-//   });
-//   if (selectedAvailabilities.size > 0) {
-//     filteredProducts = filteredProducts.filter(product => selectedAvailabilities.has(product.Availability));
-//   }
-
-//   // // Adjusted filtering for price ranges
-//   // let selectedPriceLabels = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(checkbox => checkbox.value);
-//   // if (selectedPriceLabels.length > 0) {
-//   //   filteredProducts = filteredProducts.filter(product =>
-//   //     selectedPriceLabels.some(label =>
-//   //       priceRangeMap.get(label).products.includes(product)
-//   //     )
-//   //   );
-//   // }
-  
-//   // // Update display with filtered products
-//   // updateProductDisplay(filteredProducts);
-// }
-
-// Function to update the display of product cards based on filters
-
-
-// function updateDisplay() {
-//   const cardContainer = document.getElementById('card-container');
-//   cardContainer.innerHTML = ''; // Clear out the current products
-  
-//   // Assuming you have a function to create a product card, you would call it here
-//   // For example, createProductCard(product)
-  
-//   // Get selected categories
-//   let selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(checkbox => checkbox.value);
-//   // Get selected genders
-//   let selectedGenders = Array.from(document.querySelectorAll('.gender-filter:checked')).map(checkbox => checkbox.value);
-//   // Get selected availabilities
-//   let selectedAvailabilities = Array.from(document.querySelectorAll('.availability-filter:checked')).map(checkbox => checkbox.value);
-
-//   let filteredProducts = allProducts.filter(product => {
-//     let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product.Category);
-//     let genderMatch = selectedGenders.length === 0 || selectedGenders.includes(product.Gender);
-//     let availabilityMatch = selectedAvailabilities.length === 0 || selectedAvailabilities.includes(product.Availability);
-    
-//     return categoryMatch && genderMatch && availabilityMatch;
-//   });
-
-//   filteredProducts.forEach(product => {
-//     cardContainer.appendChild(createProductCard(product));
-//   });
-// }

@@ -149,3 +149,20 @@ li a:hover {
     transition: all 0.3s ease;
   }
 }
+
+@keyframes sparkle {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+#user-points {
+  animation: sparkle 1s forwards;
+}
+
+#points-display {
+  font-size: 16px;
+  color: #f0ad4e; /* Change color as needed */
+  padding-left: 10px;
+  /* Add more styles as needed */
+} 
+
