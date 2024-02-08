@@ -69,57 +69,61 @@
   function hideValidate(input) {
     var thisAlert = $(input).parent();
 
-        $(thisAlert).removeClass('alert-validate');
-    }
-    
-    function loginUser(event) {
-        event.preventDefault(); // Prevent the default form submission
-    
-        var username = document.getElementsByName("username")[0].value.trim();
-        var password = document.getElementsByName("pass")[0].value.trim();
-      
-        // Send a request to RestDB to retrieve the user data
-        fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                "x-apikey": "65c4b47ccb555e74ec4924d5",
-                "cache-control": "no-cache"
-            },
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(users => {
-          if (users.length > 0 && users[0].Password === password) {
-            console.log("Login successful", users[0]);
-            
-            // Store user data in localStorage or sessionStorage
-            localStorage.setItem('user', JSON.stringify(users[0])); 
-            
-            alert("Successfully logged in as : " + users[0]);
-            // Redirect to the homepage
-            window.location.href = '../index.html';
-          } else {
-            console.log("Login failed: user not found or password mismatch");
-            // Handle login failure (e.g., display an error message)
-            alert("Login failed: user not found or password mismatch");
-          }
-        })
-        .catch((error) => {
-          console.error('Login error:', error);
-          console.log("Error logging in!");
-        });
-      }
-    
-    // Add event listener to the login form
-    document.querySelector('.login100-form').addEventListener('submit', loginUser);
-    
-    
+    $(thisAlert).removeClass("alert-validate");
+  }
 
+  function loginUser(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var username = document.getElementsByName("username")[0].value.trim();
+    var password = document.getElementsByName("pass")[0].value.trim();
+
+    // Send a request to RestDB to retrieve the user data
+    fetch(
+      'https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' +
+        username +
+        '"}',
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-apikey": "65c4b47ccb555e74ec4924d5",
+          "cache-control": "no-cache",
+        },
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((users) => {
+        if (users.length > 0 && users[0].Password === password) {
+          console.log("Login successful", users[0]);
+
+          // Store user data in localStorage or sessionStorage
+          localStorage.setItem("user", JSON.stringify(users[0]));
+
+          alert("Successfully logged in as : " + users[0]);
+          // Redirect to the homepage
+          window.location.href = "../index.html";
+        } else {
+          console.log("Login failed: user not found or password mismatch");
+          // Handle login failure (e.g., display an error message)
+          alert("Login failed: user not found or password mismatch");
+        }
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+        console.log("Error logging in!");
+      });
+  }
+
+  // Add event listener to the login form
+  document
+    .querySelector(".login100-form")
+    .addEventListener("submit", loginUser);
 })(jQuery);
 
 document.getElementById("signup-link").addEventListener("click", function () {
@@ -139,12 +143,17 @@ function passwordsMatch(password, confirmPassword) {
 
 // Function to check if the username is available
 function isUsernameAvailable(username, successCallback, errorCallback) {
-  fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      "x-apikey": "65c4b47ccb555e74ec4924d5",
-      "cache-control": "no-cache"
+  fetch(
+    'https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials?q={"User":"' +
+      username +
+      '"}',
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-apikey": "65c4b47ccb555e74ec4924d5",
+        "cache-control": "no-cache",
+      },
     }
   )
     .then((response) => response.json())
@@ -171,27 +180,27 @@ function signUpUser(username, password) {
     Points: 0,
   };
 
-  fetch('https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials', {
-    method: 'POST',
+  fetch("https://fedassignmentv2-cd2d.restdb.io/rest/user-credentials", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       "x-apikey": "65c4b47ccb555e74ec4924d5",
-      "cache-control": "no-cache"
+      "cache-control": "no-cache",
     },
     body: JSON.stringify(userData),
   })
-  .then(response => {
-    if(response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Failed to sign up');
-    }
-  })
-  .then(data => {
-    console.log('Signed up successfully', data);
-    alert("Successfully signed up as: " +  data.User)
-    // Store user data in localStorage or sessionStorage
-    localStorage.setItem('user', JSON.stringify(data));
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to sign up");
+      }
+    })
+    .then((data) => {
+      console.log("Signed up successfully", data);
+      alert("Successfully signed up as: " + data.User);
+      // Store user data in localStorage or sessionStorage
+      localStorage.setItem("user", JSON.stringify(data));
 
       // Redirect to the homepage
       window.location.href = "../index.html";

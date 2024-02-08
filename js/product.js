@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchProducts(); // Wait for fetchProducts to complete
 
   // Now that fetchProducts has completed, you can safely attach event listeners to checkboxes
-  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', applyFilters);
+  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilters);
   });
 });
 
@@ -28,11 +28,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Function to fetch products from RESTDB API
 async function fetchProducts() {
   try {
-    const response = await fetch('https://fedassignmentv2-cd2d.restdb.io/rest/products', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-apikey': '65c4b47ccb555e74ec4924d5',
+    const response = await fetch(
+      "https://fedassignmentv2-62c5.restdb.io/rest/products",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-apikey": "65c4e3389ec8d460022d98b7",
+        },
       }
     );
 
@@ -197,12 +200,15 @@ function updateProductDisplay(filteredProducts) {
 // Function to create a product card (you will need to define the HTML structure of a card)
 function createProductCard(product) {
   // Create card elements and fill with product data
-  const cardContainer = document.getElementById('card-container');
+  const cardContainer = document.getElementById("card-container");
   console.log("testing");
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  card.setAttribute('onclick', `window.location.href='product.html?id=${product.ProductID}'`);
-  const image = document.createElement('img');
+  const card = document.createElement("div");
+  card.className = "product-card";
+  card.setAttribute(
+    "onclick",
+    `window.location.href='product.html?id=${product.ProductID}'`
+  );
+  const image = document.createElement("img");
 
   // Construct the image URL directly using the provided 'Image' property
   image.src = `../images/product-${product.ProductID}.avif`;
@@ -245,6 +251,5 @@ function createProductCard(product) {
   // Append card to card container
   cardContainer.appendChild(card);
 
-  
   return card;
 }
