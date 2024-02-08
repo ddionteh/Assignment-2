@@ -82,11 +82,11 @@ function loadChatbot() {
 
   // Fetch available products from RestDB
   function fetchAvailableProducts(callback) {
-      fetch('https://fedassignmentv2-8d9a.restdb.io/rest/products', {
+      fetch('https://fedassignmentv2-62c5.restdb.io/rest/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          "x-apikey": "65c0999900d3da120a63a29b	",
+          "x-apikey": "65c4e3389ec8d460022d98b7",
           "cache-control": "no-cache"
         }
       })
