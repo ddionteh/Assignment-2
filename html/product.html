@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Product Card</title>
-<link rel="stylesheet" href="../css/navigation.css"/>
-<link rel="stylesheet" href="../css/product.css"/>
-</head>
-<body>
- <div class="product-page-container">
-  <!-- Filter Sidebar -->
-  <aside class="filter-sidebar" id="filters">
-    <!-- Filters will be dynamically inserted here -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Product Card</title>
+    <link rel="stylesheet" href="../css/navigation.css" />
+    <link rel="stylesheet" href="../css/product.css" />
+  </head>
+  <body>
+    <div class="product-page-container">
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar" id="filters">
+        <!-- Filter by Price -->
+        <div id="price-filters" class="filter-section">
+          <h2 class="filter-heading">Filter by Price</h2>
+          <!-- Price range checkboxes will be dynamically inserted here -->
+        </div>
 
-    <!-- Price range filters section -->
-    <div id="price-filters">
-      <h2>Filter by Price</h2>
-      <!-- Price range checkboxes will be dynamically inserted here -->
+        <!-- Filter by Clothing -->
+        <div id="clothing-filters" class="filter-section">
+          <h2 class="filter-heading">Filter by Clothing</h2>
+          <!-- Clothing category checkboxes will be dynamically inserted here -->
+        </div>
+      </aside>
+
+      <!-- Product Listing -->
+      <section class="product-listing" id="card-container">
+        <!-- Product cards will be inserted here -->
+      </section>
     </div>
-  </aside>
 
-  <!-- Product Listing -->
-  <section class="product-listing">
-    <div id="card-container">
-      <!-- Product cards will be inserted here -->
-    </div>
-  </section>
-</div>
-
-<script src="../js/product.js"></script>
-<script src="../js/navigation.js"></script>
-</body>
+    <script src="../js/product.js"></script>
+    <script src="../js/navigation.js"></script>
+  </body>
 </html>

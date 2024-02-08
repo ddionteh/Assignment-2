@@ -1,41 +1,89 @@
 function createFooter() {
-  // Create footer content
+  var footer = document.createElement("footer");
   var footerContent = document.createElement("div");
-  footerContent.classList.add("content-box");
+  footerContent.classList.add("footer-content");
 
-  // About Us
-  var aboutUs = document.createElement("div");
-  aboutUs.innerHTML =
-    "<h3>About Us</h3><p>At VogueValley, we believe that shopping should be more than just a transaction – it should be an experience. Our mission is to provide a seamless and enjoyable online shopping experience for customers of all tastes and preferences.</p>";
+  var aboutUs = createContentBox(
+    "About Us",
+    "At VogueValley, we believe that shopping should be more than just a transaction – it should be an experience. Our mission is to provide a seamless and enjoyable online shopping experience for customers of all tastes and preferences."
+  );
   footerContent.appendChild(aboutUs);
 
-  // Business Hours
-  var businessHours = document.createElement("div");
-  businessHours.innerHTML =
-    "<h3>Business Hours</h3><p>Monday - Sunday<br>7am - 10pm</p><br><p>You may call us anytime of the day at <a href='tel:+6512345678'>+65 1234 5678</a></p>";
+  var businessHours = createContentBox(
+    "Business Hours",
+    "Monday - Sunday<br>7am - 10pm<br>You may call us anytime of the day at <a href='tel:+6512345678'>+65 1234 5678</a>"
+  );
   footerContent.appendChild(businessHours);
 
-  // Contact
-  //var contact = document.createElement("div");
-  // contact.innerHTML = "<h3>Contact</h3><p>You may call us anytime of the day at <a href='tel:+6512345678'>+65 1234 5678</a></p>";
-  //footerContent.appendChild(contact);
-
-  // Quick Links
-  var quickLinks = document.createElement("div");
-  quickLinks.innerHTML =
-    "<h3>Quick Links</h3><button onclick=\"window.location.href='index.html'\">Home</button><button onclick=\"window.location.href='aichat.html'\">AI Chat</button><button onclick=\"window.location.href='redeem.html'\">Redeem</button><button onclick=\"window.location.href='cart.html'\">Shopping Cart</button><button onclick=\"window.location.href='login.html'\">Login</button>";
+  var quickLinks = createContentBox("Quick Links", null);
+  quickLinks.appendChild(createLinks());
   footerContent.appendChild(quickLinks);
 
-  // Image Box
-  var imageBox = document.createElement("div");
-  imageBox.classList.add("image-box");
-  imageBox.innerHTML =
-    "<h3>Connect</h3><a href='' target='_blank'><img src='https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-logo-instagram-ini-ada-varias-dan-transparan-33.png' alt='Instagram'></a><a href='' target='_blank'><img src='https://www.facebook.com/images/fb_icon_325x325.png' alt='Facebook'></a>";
-  footerContent.appendChild(imageBox);
+  var socialIcons = createContentBox("Connect", null);
+  socialIcons.appendChild(createSocialIcons());
+  footerContent.appendChild(socialIcons);
 
-  // Append footer content to the footer
-  document.getElementById("footerContent").appendChild(footerContent);
+  footer.appendChild(footerContent);
+  document.body.appendChild(footer);
+
+  var legalInfo = document.createElement("div");
+  legalInfo.classList.add("legal");
+  legalInfo.innerHTML =
+    "&copy; 2024 VogueValley. All rights reserved. <a href='#'>Privacy Policy</a> <a href='#'>Terms of Service</a>";
+  footer.appendChild(legalInfo);
 }
 
-// Call the function to create footer
+function createContentBox(title, content) {
+  var box = document.createElement("div");
+  box.classList.add("content-box");
+  var titleElement = document.createElement("h3");
+  titleElement.textContent = title;
+  box.appendChild(titleElement);
+  if (content) {
+    var contentElement = document.createElement("p");
+    contentElement.innerHTML = content;
+    box.appendChild(contentElement);
+  }
+  return box;
+}
+
+function createLinks() {
+  var links = document.createElement("div");
+  links.classList.add("links");
+  var linkNames = ["Home", "AI Chat", "Redeem", "Shopping Cart", "Login"];
+  linkNames.forEach(function (name) {
+    var link = document.createElement("a");
+    link.textContent = name;
+    link.href = name.toLowerCase().replace(" ", "") + ".html";
+    links.appendChild(link);
+  });
+  return links;
+}
+
+function createSocialIcons() {
+  var socialIcons = document.createElement("div");
+  socialIcons.classList.add("social-icons");
+  var instagram = createSocialIcon(
+    "Instagram",
+    "https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-logo-instagram-ini-ada-varias-dan-transparan-33.png"
+  );
+  socialIcons.appendChild(instagram);
+  var facebook = createSocialIcon(
+    "Facebook",
+    "https://www.facebook.com/images/fb_icon_325x325.png"
+  );
+  socialIcons.appendChild(facebook);
+  return socialIcons;
+}
+
+function createSocialIcon(alt, src) {
+  var icon = document.createElement("a");
+  icon.href = "#";
+  var image = document.createElement("img");
+  image.alt = alt;
+  image.src = src;
+  icon.appendChild(image);
+  return icon;
+}
+
 createFooter();
