@@ -178,9 +178,10 @@ iframe {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-image: url('../images/login-background.jpg');
 }
 
-.wrap-login100 {
+.wrap-login100, .wrap-signup100 {
   width: 500px;
   background: #fff;
   border-radius: 10px;
@@ -191,7 +192,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Form ]*/
 
-.login100-form {
+.login100-form,.signup100-form {
   width: 100%;
 }
 
@@ -236,6 +237,10 @@ iframe {
   padding: 0 7px 0 43px;
 }
 
+/* Add some bottom margin to the password input container */
+.wrap-input100.validate-input {
+  margin-bottom: 20px; /* Adjust the value as needed */
+}
 
 /*---------------------------------------------*/
 .focus-input100 {
@@ -349,7 +354,7 @@ iframe {
   transition: all 0.4s;
 }
 
-.login100-form-btn {
+.login100-form-btn, .signup100-form-btn {
   font-family: Poppins-Medium;
   font-size: 16px;
   color: #fff;
@@ -371,7 +376,6 @@ iframe {
 .wrap-login100-form-btn:hover .login100-form-bgbtn {
   left: 0;
 }
-
 
 /*------------------------------------------------------------------
 [ Alert validate ]*/
@@ -438,31 +442,6 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
-}
-
-
-/*//////////////////////////////////////////////////////////////////
-[ Social item ]*/
-.login100-social-item {
-  font-size: 25px;
-  color: #fff;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: 5px;
-}
-
-.login100-social-item:hover {
-  color: #fff;
-  background-color: #333333;
 }
 
 /*//////////////////////////////////////////////////////////////////
