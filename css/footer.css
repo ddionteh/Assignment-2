@@ -1,12 +1,15 @@
 footer {
   background-color: #1d1a39;
   color: #ffffff;
-  padding: 40px 20px; /* Increase padding to make the footer taller */
+  padding: 80px 20px; /* Increase padding to make the footer taller */
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start; /* Push contents to the top of the footer */
+  position: fixed; /* Change position to fixed */
+  bottom: 0; /* Position at the bottom of the viewport */
+  width: 100%; /* Make the footer span the entire width */
 }
 
 .footer-content {
@@ -61,6 +64,8 @@ footer {
 }
 
 .legal {
-  margin-top: 20px;
+  margin-top: 60px; /* Add spacing between content and "All rights reserved" text */
+  margin-bottom: 20px; /* Add some space below the text */
   font-size: 12px;
+  text-align: right; /* Center the text */
 }

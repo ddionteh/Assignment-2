@@ -50,11 +50,16 @@ function createContentBox(title, content) {
 function createLinks() {
   var links = document.createElement("div");
   links.classList.add("links");
-  var linkNames = ["Home", "AI Chat", "Redeem", "Shopping Cart", "Login"];
+  var linkNames = ["Home", "Product", "Redeem", "Cart", "Login"];
   linkNames.forEach(function (name) {
     var link = document.createElement("a");
-    link.textContent = name;
-    link.href = name.toLowerCase().replace(" ", "") + ".html";
+    if (name === "Home") {
+      link.textContent = name;
+      link.href = "../index.html"; // Set the href to index.html for the "Home" link
+    } else {
+      link.textContent = name;
+      link.href = name.toLowerCase().replace(" ", "") + ".html";
+    }
     links.appendChild(link);
   });
   return links;
