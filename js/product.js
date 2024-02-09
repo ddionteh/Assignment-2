@@ -34,7 +34,7 @@ async function fetchProducts() {
         'Content-Type': 'application/json',
         'x-apikey': '65c614116a1c9939a9be0023',
       }
-    );
+  });
 
     if (!response.ok) throw new Error("Network response was not ok");
 

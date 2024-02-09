@@ -178,3 +178,12 @@ body {
 .no-scroll {
   overflow: hidden;
 }
+
+#lottie-animation {
+  position: fixed; /* Fixed position to stay in place during scroll */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset the transform by half of its height and width to center */
+  z-index: 9999; /* High z-index to ensure it's above other content */
+  display: none; /* Initially hidden */
+}
