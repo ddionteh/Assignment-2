@@ -3,6 +3,7 @@ footer {
   color: #ffffff;
   padding: 80px 20px; /* Increase padding to make the footer taller */
   text-align: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,18 +29,20 @@ footer {
 .links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center; /* Center the quick links horizontally */
 }
 
 .links a {
   background: #242048;
   color: #a2b5cd;
-  padding: 10px 15px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
   transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  width: 100%; /* Ensure each link takes up the full width of its container */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 .links a:hover {
@@ -49,7 +52,7 @@ footer {
 
 .social-icons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .social-icons img {
@@ -65,7 +68,8 @@ footer {
 
 .legal {
   margin-top: 60px; /* Add spacing between content and "All rights reserved" text */
-  margin-bottom: 20px; /* Add some space below the text */
+  margin-left: auto; /* Add this line to center the legal info */
+  margin-right: auto; /* Add this line to center the legal info */
   font-size: 12px;
-  text-align: right; /* Center the text */
+  text-align: center;
 }

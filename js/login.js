@@ -147,7 +147,7 @@ function isUsernameAvailable(username, successCallback, errorCallback) {
       "x-apikey": "65c614116a1c9939a9be0023",
       "cache-control": "no-cache"
     }
-})
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data.length === 0) {

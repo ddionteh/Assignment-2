@@ -50,7 +50,7 @@ function createContentBox(title, content) {
 function createLinks() {
   var links = document.createElement("div");
   links.classList.add("links");
-  var linkNames = ["Home", "AI Chat", "Shopping Cart", "Login"];
+  var linkNames = ["Home", "Product", "Shopping Cart", "Login"];
   linkNames.forEach(function (name) {
     var link = document.createElement("a");
     if (name === "Home") {
@@ -65,30 +65,33 @@ function createLinks() {
   return links;
 }
 
-function createSocialIcons() {
-  var socialIcons = document.createElement("div");
-  socialIcons.classList.add("social-icons");
-  var instagram = createSocialIcon(
-    "Instagram",
-    "https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-logo-instagram-ini-ada-varias-dan-transparan-33.png"
-  );
-  socialIcons.appendChild(instagram);
-  var facebook = createSocialIcon(
-    "Facebook",
-    "https://www.facebook.com/images/fb_icon_325x325.png"
-  );
-  socialIcons.appendChild(facebook);
-  return socialIcons;
-}
-
-function createSocialIcon(alt, src) {
+function createSocialIcon(alt, src, link) {
   var icon = document.createElement("a");
-  icon.href = "#";
+  icon.href = link;
+  icon.target = "_blank"; // Open the link in a new tab
   var image = document.createElement("img");
   image.alt = alt;
   image.src = src;
   icon.appendChild(image);
   return icon;
+}
+
+function createSocialIcons() {
+  var socialIcons = document.createElement("div");
+  socialIcons.classList.add("social-icons");
+  var instagram = createSocialIcon(
+    "Instagram",
+    "https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-logo-instagram-ini-ada-varias-dan-transparan-33.png",
+    "https://www.instagram.com/uniqlosg/?hl=en"
+  );
+  socialIcons.appendChild(instagram);
+  var facebook = createSocialIcon(
+    "Facebook",
+    "https://www.facebook.com/images/fb_icon_325x325.png",
+    "https://www.facebook.com/uniqlo.sg/"
+  );
+  socialIcons.appendChild(facebook);
+  return socialIcons;
 }
 
 createFooter();

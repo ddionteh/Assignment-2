@@ -34,7 +34,7 @@ async function fetchProducts() {
         'Content-Type': 'application/json',
         'x-apikey': '65c614116a1c9939a9be0023',
       }
-  });
+    );
 
     if (!response.ok) throw new Error("Network response was not ok");
 
@@ -199,17 +199,17 @@ function createProductCard(product) {
   // Create card elements and fill with product data
   const cardContainer = document.getElementById("card-container");
   console.log("testing");
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  const image = document.createElement('img');
+  const card = document.createElement("div");
+  card.className = "product-card";
+  const image = document.createElement("img");
 
   // Construct the image URL directly using the provided 'Image' property
   image.src = `../images/product-${product.ProductID}.avif`;
   image.alt = product.Name;
 
   // Add an "Add to Cart" button
-  const addToCartBtn = document.createElement('button');
-  addToCartBtn.textContent = 'Add to Cart';
+  const addToCartBtn = document.createElement("button");
+  addToCartBtn.textContent = "View product";
   addToCartBtn.onclick = () => addToCart(product);
 
   const name = document.createElement("h3");
@@ -250,12 +250,36 @@ function createProductCard(product) {
 
 // Function to add item to cart
 function addToCart(product) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartItem = cart.find(item => item.ProductID === product.ProductID);
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartItem = cart.find((item) => item.ProductID === product.ProductID);
   if (cartItem) {
     cartItem.Quantity += 1;
   } else {
     cart.push({ ProductID: product.ProductID, Name : product.Name, Quantity: 1, Image: `../images/product-${product.ProductID}.avif`, Description: product.Description, Category: product.Category, Gender: product.Gender, Availability: product.Availability, Price : product.Price});
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Play Lottie animation
+  playLottieAnimation();
+}
+
+// Function to play the Lottie animation
+function playLottieAnimation() {
+  // Display the Lottie animation
+  const lottieContainer = document.getElementById("lottie-animation");
+  lottieContainer.style.display = "block";
+
+  // Load the animation
+  const animation = lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: "svg",
+    loop: false,
+    autoplay: true,
+    path: "https://lottie.host/8b6bfc9b-5cba-4a47-8c7b-ada50b1a9b8b/hdYc6nUa5Q.json", // Provide the path to your Lottie animation JSON file
+  });
+
+  // When the animation completes, hide the Lottie container
+  animation.addEventListener("complete", () => {
+    lottieContainer.style.display = "none";
+  });
 }
