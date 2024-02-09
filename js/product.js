@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchProducts(); // Wait for fetchProducts to complete
 
   // Now that fetchProducts has completed, you can safely attach event listeners to checkboxes
-  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
-    checkbox.addEventListener("change", applyFilters);
+  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', applyFilters);
   });
 });
 
@@ -197,19 +197,19 @@ function updateProductDisplay(filteredProducts) {
 // Function to create a product card (you will need to define the HTML structure of a card)
 function createProductCard(product) {
   // Create card elements and fill with product data
-  const cardContainer = document.getElementById("card-container");
+  const cardContainer = document.getElementById('card-container');
   console.log("testing");
-  const card = document.createElement("div");
-  card.className = "product-card";
-  const image = document.createElement("img");
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  const image = document.createElement('img');
 
   // Construct the image URL directly using the provided 'Image' property
   image.src = `../images/product-${product.ProductID}.avif`;
   image.alt = product.Name;
 
   // Add an "Add to Cart" button
-  const addToCartBtn = document.createElement("button");
-  addToCartBtn.textContent = "View product";
+  const addToCartBtn = document.createElement('button');
+  addToCartBtn.textContent = 'Add to Cart';
   addToCartBtn.onclick = () => addToCart(product);
 
   const name = document.createElement("h3");
@@ -250,16 +250,15 @@ function createProductCard(product) {
 
 // Function to add item to cart
 function addToCart(product) {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartItem = cart.find((item) => item.ProductID === product.ProductID);
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartItem = cart.find(item => item.ProductID === product.ProductID);
   if (cartItem) {
     cartItem.Quantity += 1;
   } else {
     cart.push({ ProductID: product.ProductID, Name : product.Name, Quantity: 1, Image: `../images/product-${product.ProductID}.avif`, Description: product.Description, Category: product.Category, Gender: product.Gender, Availability: product.Availability, Price : product.Price});
   }
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 
-  // Play Lottie animation
   playLottieAnimation();
 }
 
