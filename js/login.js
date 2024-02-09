@@ -79,11 +79,11 @@
         var password = document.getElementsByName("pass")[0].value.trim();
       
         // Send a request to RestDB to retrieve the user data
-        fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+        fetch('https://fedassignmentv2-7a2a.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "x-apikey": "65c4e3389ec8d460022d98b7",
+                "x-apikey": "65c614116a1c9939a9be0023",
                 "cache-control": "no-cache"
             },
         })
@@ -112,6 +112,7 @@
         .catch((error) => {
           console.error('Login error:', error);
           console.log("Error logging in!");
+          alert("Sorry, there's an issue logging in.");
         });
       }
     
@@ -139,11 +140,11 @@ function passwordsMatch(password, confirmPassword) {
 
 // Function to check if the username is available
 function isUsernameAvailable(username, successCallback, errorCallback) {
-  fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
+  fetch('https://fedassignmentv2-7a2a.restdb.io/rest/user-credentials?q={"User":"' + username + '"}', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c4e3389ec8d460022d98b7",
+      "x-apikey": "65c614116a1c9939a9be0023",
       "cache-control": "no-cache"
     }
 })
@@ -152,7 +153,7 @@ function isUsernameAvailable(username, successCallback, errorCallback) {
       if (data.length === 0) {
         // No user found with this username
         successCallback();
-        console.log("Empty");
+        console.log("No user with this username.");
       } else {
         errorCallback("Username is already taken");
       }
@@ -171,11 +172,11 @@ function signUpUser(username, password) {
     Points: 0,
   };
 
-  fetch('https://fedassignmentv2-62c5.restdb.io/rest/user-credentials', {
+  fetch('https://fedassignmentv2-7a2a.restdb.io/rest/user-credentials', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      "x-apikey": "65c4e3389ec8d460022d98b7",
+      "x-apikey": "65c614116a1c9939a9be0023",
       "cache-control": "no-cache"
     },
     body: JSON.stringify(userData),

@@ -1,10 +1,11 @@
   // points.js
-  const API_KEY = '65c4e3389ec8d460022d98b7'; // Replace with your actual RestDB API key
-  const BASE_URL = 'https://fedassignmentv2-62c5.restdb.io/rest/user-credentials';
+  const API_KEY = '65c614116a1c9939a9be0023'; // Replace with your actual RestDB API key
+  const BASE_URL = 'https://fedassignmentv2-7a2a.restdb.io/rest/user-credentials';
   let lastClickTime = 0;
 
   // Helper function to get the user object from localStorage
   function getUser() {
+    console.log(JSON.parse(localStorage.getItem('user')) || null);
     return JSON.parse(localStorage.getItem('user')) || null;
   }
 
@@ -25,23 +26,32 @@
     user.Points = newPoints;
     setUser(user);
 
-    console.log(user);
-    // Then update in the database
-    fetch(`${BASE_URL}/${user._id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-apikey': API_KEY,
-        'cache-control': 'no-cache'
-      },
-      body: JSON.stringify({ Points: newPoints })
-    })
-    .then(response => response.json())
-    .then(updatedUser => {
-      setUser(updatedUser); // Save the updated user data
-      if (callback) callback(updatedUser.Points);
-    })
-    .catch(error => console.error('Error updating user points:', error));
+
+    // due to free plan constraints, CORS policy issues, unable to update
+    // require premium plan for RESTDB to work.
+
+    // const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    
+    // const queryParam = encodeURIComponent(`{"User":"${user.User}"}`);
+    // const url = `${corsProxyUrl}${BASE_URL}?q=${queryParam}}`;
+
+    // // Then update in the database
+    // fetch(url, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'x-apikey': API_KEY,
+    //     'cache-control': 'no-cache',
+    //   },
+    //   body: JSON.stringify({ Points: newPoints })
+    // })
+    // .then(response => response.json())
+    // .then(updatedUser => {
+    //   setUser(updatedUser); // Save the updated user data
+    //   console.log(user);
+    //   if (callback) callback(updatedUser.Points);
+    // })
+    // .catch(error => console.error('Error updating user points:', error));
   }
 
   // Increment points by 1

@@ -2,7 +2,8 @@
 // Gemini API key: AIzaSyCTYgBtE1NR5Iy (placeholder) wGYSOwNYB_me6VeZAA5s
 // OpenAI API key: sk-1VjfI36JtCWiPopkC1yST (placeholder) 3BlbkFJabZl0h5iZWk9U3qBRDCm
 
-
+let chatbotToggler = null;
+let closeBtn = null;
 function loadChatbot() {
   // Create chatbot elements
   const chatbotDiv = document.createElement('div');
@@ -33,11 +34,12 @@ function loadChatbot() {
   // Append the chatbot to the body
   document.body.appendChild(chatbotDiv);
 
-  const chatbotToggler = document.querySelector(".chatbot-toggler");
-  const closeBtn = document.querySelector(".close-btn");
+  chatbotToggler = document.querySelector(".chatbot-toggler");
+  closeBtn = document.querySelector(".close-btn");
   const chatbox = document.querySelector(".chatbox");
   const chatInput = document.querySelector(".chat-input textarea");
   const sendChatBtn = document.querySelector(".chat-input span");
+  console.log("check");
 
   let userMessage = null; // Variable to store user's message
   const API_KEY_PART_1 = " sk-1VjfI36JtCWiPopkC1yST"; // trying to bypass OpenAI security for assignment purposes
@@ -82,11 +84,11 @@ function loadChatbot() {
 
   // Fetch available products from RestDB
   function fetchAvailableProducts(callback) {
-      fetch('https://fedassignmentv2-62c5.restdb.io/rest/products', {
+      fetch('https://fedassignmentv2-7a2a.restdb.io/rest/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          "x-apikey": "65c4e3389ec8d460022d98b7",
+          "x-apikey": "65c614116a1c9939a9be0023",
           "cache-control": "no-cache"
         }
       })
@@ -168,6 +170,7 @@ function loadChatbot() {
 }
 
 // Make sure to wait for the DOM content to be fully loaded
-window.addEventListener('DOMContentLoaded', (event) => {
-  loadChatbot();
+document.addEventListener('DOMContentLoaded', () => {
+  loadChatbot(); // Ensure this is called only after DOM is fully loaded.
+  document.dispatchEvent(new CustomEvent('ChatbotLoaded'));
 });

@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Function to fetch products from RESTDB API
 async function fetchProducts() {
   try {
-    const response = await fetch('https://fedassignmentv2-62c5.restdb.io/rest/products', {
+    const response = await fetch('https://fedassignmentv2-7a2a.restdb.io/rest/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'x-apikey': '65c4e3389ec8d460022d98b7',
+        'x-apikey': '65c614116a1c9939a9be0023',
       }
   });
 
@@ -69,10 +69,10 @@ async function fetchProducts() {
     createFilterCheckboxes();
     createPriceRangeCheckboxes();
     addClickEventListenersToProductCards();
-    console.log("CHCEKING");
     return;
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
+    alert("Unable to display products!");
   }
 }
 
@@ -212,10 +212,6 @@ function createProductCard(product) {
   addToCartBtn.textContent = 'Add to Cart';
   addToCartBtn.onclick = () => addToCart(product);
 
-  // Set attributes for expanding the card
-  card.setAttribute('data-details', JSON.stringify(product));
-  card.onclick = expandCard;
-
   const name = document.createElement("h3");
   name.textContent = product.Name;
 
@@ -237,8 +233,6 @@ function createProductCard(product) {
     " ",
     "-"
   )}`;
-  // Example class name: card-availability out-of-stock
-  card.appendChild(stockStatus);
 
   // Append elements to card
   card.appendChild(image);
@@ -251,13 +245,6 @@ function createProductCard(product) {
   // Append card to card container
   cardContainer.appendChild(card);
 
-  // Set up the click event listener to expand the card
-  card.addEventListener('click', function(event) {
-  // Prevent any parent handlers from being executed
-  event.stopPropagation();
-  
-  // Call the function to create an expanded product card
-  createExpandedProductCard(product);});
   return card;
 }
 
@@ -268,60 +255,7 @@ function addToCart(product) {
   if (cartItem) {
     cartItem.Quantity += 1;
   } else {
-    cart.push({ ProductID: product.ProductID, Name : product.Name, Quantity: 1, Image: `../images/product-${product.ProductID}.avif`, Description: product.Description, Category: product.Category, Gender: product.Gender, Availability: product.Availability });
+    cart.push({ ProductID: product.ProductID, Name : product.Name, Quantity: 1, Image: `../images/product-${product.ProductID}.avif`, Description: product.Description, Category: product.Category, Gender: product.Gender, Availability: product.Availability, Price : product.Price});
   }
   localStorage.setItem('cart', JSON.stringify(cart));
 }
-
-// Function to expand the product card
-function expandCard(event) {
-  // Prevents the card click from triggering navigation
-  event.stopPropagation();
-
-  const productDetails = JSON.parse(this.dataset.details);
-  const expandedView = document.createElement('div');
-  expandedView.className = 'expanded-card';
-  // Populate expandedView with productDetails...
-  document.body.appendChild(expandedView);
-  document.body.classList.add('darken');
-}
-
-// Close the expanded card
-function closeExpandedCard() {
-  document.querySelector('.expanded-card').remove();
-  document.body.classList.remove('darken');
-}
-
-// Function to create an expanded product card
-function createExpandedProductCard(product) {
-  // Create the expanded card container
-  const expandedCard = document.createElement('div');
-  expandedCard.classList.add('expanded-card');
-
-  // Create the content of the expanded card using the product details
-  expandedCard.innerHTML = `
-    <div class="expanded-card-content">
-      <span class="close-expanded-card" onclick="closeExpandedCard()">&times;</span>
-      <img src="../images/product-${product.ProductID}.avif" alt="${product.Name}" class="expanded-product-image">
-      <h3>${product.Name}</h3>
-      <p>${product.Description}</p>
-      <p>Category: ${product.Category}</p>
-      <p>Gender: ${product.Gender}</p>
-      <p>Price: $${product.Price}</p>
-      <p>Availability: ${product.Availability}</p>
-      <p>Quantity Available: ${product.Quantity}</p>
-      <button class="add-to-cart-btn">Add to Cart</button>
-    </div>
-  `;
-
-  // Append the expanded card to the body
-  document.body.appendChild(expandedCard);
-  document.body.classList.add('no-scroll'); // Disable scroll on body
-}
-
-// Function to close the expanded product card
-function closeExpandedCard() {
-  document.querySelector('.expanded-card').remove();
-  document.body.classList.remove('no-scroll'); // Enable scroll on body
-}
-

@@ -7,6 +7,7 @@
   font-family: "Poppins", sans-serif;
 }
 .chatbot-toggler {
+  z-index: 2;
   position: fixed;
   bottom: 30px;
   right: 35px;
@@ -37,7 +38,6 @@ body.show-chatbot .chatbot-toggler span:last-child {
   opacity: 1;
 }
 .chatbot {
-  z-index: 3;
   position: fixed;
   right: 35px;
   bottom: 90px;
@@ -176,6 +176,16 @@ header h2 {
 
 
 @media (max-width: 490px) {
+  .show-chatbot {
+    z-index: 3;
+  }
+  .body-no-scroll {
+    overflow: hidden;
+    height: 100%;
+  }
+  .chatbot header {
+    height: 10vh;
+  }
   .chatbot-toggler {
     right: 20px;
     bottom: 20px;
@@ -189,7 +199,10 @@ header h2 {
   }
   .chatbot .chatbox {
     height: 90%;
-    padding: 25px 15px 100px;
+    padding: 0;
+    padding-right: 20px;
+    padding-bottom: 60px;
+    position: sticky;
   }
   .chatbot .chat-input {
     padding: 5px 15px;

@@ -1,48 +1,57 @@
-# VOGUEVALLEY E-commerce Website
-### By Ahmed and Diontae
+# Front-End Development Assignment 2: VOGUEVALLEY
+# Project Overview
 
-Live Site: [ace-clothing.netlify.app](https://ace-clothing.netlify.app)
-
-Ace Clothing offers a diverse range of products including clothing, perfumes, cosmetics, and accessories. With a gamification system and an AI chatbot, we aim to provide a unique and engaging shopping experience.
-
-## Design Process
-
-Inspired by the need for a captivating online shopping experience, we blended modern web design with retro arcade elements. The design echoes a balance of nostalgia and modernity, tailored for users seeking an interactive and rewarding online shopping journey.
-
-Wireframe: [Figma Design](https://www.figma.com/file/98u1fmfw0utAd8NBSyRPS3/Error404-FED-Assignment?type=design&node-id=0%3A1&mode=design&t=nagg2nML9COIxDar-1)
-
-## Features
-
-- **Gamification System**: Points are awarded for exploring different categories and purchases, with rewards available for redemption.
-- **AI Chatbot**: Offers product recommendations, order tracking, and customer support.
-- **Responsive Design**: Ensures a seamless experience across all devices.
-- **User Reviews and Ratings**: Engage with the community through feedback.
-- **Advanced Search and Filters**: Easily find products with robust sorting features.
-
-## Technologies Used
-
-- HTML5 & CSS3 for markup and styling.
-- Vite + React for efficient, modern web development.
-- RESTDB for database management.
-- Lottie for engaging animations.
-- Bootstrap for responsive design.
+# Design Process
 
 
-## Acknowledgments
-
-Inspiration drawn from Uniqlo and various website interfaces. Special thanks to the development tools and APIs that made this project possible.
-
-## Project Team
-
-Diontae & Ahmed - For the creation and development of the VOGUE VALLEY e-commerce platform.
+# Target Audience & Goals
 
 
-## Sources
-Product images: UNIQLO SINGAPORE ONLINE - THE LARGEST PRODUCT LINEUPS AVAILABLE
+# User Stories
+
+
+# Design Artifacts
+
+# Features
+### Existing Features
+- Login Form / Signup Form
+- Point system (gamification)
+- AI Chatbot for personal styling
+- Shopping cart 
+- Filter and sorting for specific products
+- RestDB API as Database and OpenAI for Chatbot
+### Features Left to Implement
+- Search function
+- Memory game
+- Review and rating
+- User's recent activity (recently reviewed products)
+- Payment Gateway API (payment function when checking out)
+# Technologies Used
+
+
+# Testing
+
+
+### Cross-Browser and Responsiveness
+
+
+Known Issues
+
+
+# Credits 
+### Content
+https://chat.openai.com/ 
+
+I received inspiration for this project from 
+Product images: [UNIQLO SINGAPORE ONLINE - THE LARGEST PRODUCT LINEUPS AVAILABLE](https://www.uniqlo.com/sg/en/)
 
 Navigation bar : https://chat.openai.com/ 
 
-Login form: 67 Bootstrap Login Forms (freefrontend.com)
+Login form: [67 Bootstrap Login Forms (freefrontend.com)](https://freefrontend.com/bootstrap-login-forms/)
 
-Inspiration: UNIQLO SINGAPORE ONLINE - THE LARGEST PRODUCT LINEUPS AVAILABLE, https://chat.openai.com/ 
+Menu icon image - https://thenounproject.com/icon/menu-356421/
 
+Cart checkout page layout - https://bootstraptor.com/snippets/bootstrap-4-snippet-shopping-cart/ 
+
+### Acknowledgements
+Inspiration: [UNIQLO SINGAPORE ONLINE - THE LARGEST PRODUCT LINEUPS AVAILABLE](https://www.uniqlo.com/sg/en/), https://chat.openai.com/, https://www.nike.com/sg
