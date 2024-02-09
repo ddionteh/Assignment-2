@@ -96,6 +96,25 @@ li a:hover {
   display: none;
 }
 
+.hamburger {
+  display: none;
+}
+
+.overlay {
+  display: none;
+  /* Overlay styles */
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .menu.active + .overlay {
+    display: block;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   nav {
     max-width: 98%;
