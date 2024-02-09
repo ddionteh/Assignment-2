@@ -17,6 +17,7 @@ nav {
   z-index: 2;
   display: flex;
   justify-content: space-between;
+  padding-top: 14px;
   max-width: 100%;
   width: 90vw;
   margin: auto;
@@ -151,8 +152,14 @@ li a:hover {
 }
 
 @keyframes sparkle {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1.2); }
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 #user-points {
@@ -164,5 +171,4 @@ li a:hover {
   color: #f0ad4e; /* Change color as needed */
   padding-left: 10px;
   /* Add more styles as needed */
-} 
-
+}

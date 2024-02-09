@@ -20,9 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
               isCurrentDirectory() ? "html/product.html" : "product.html"
             }">Products</a></li>
             <li><a href="${
-              isCurrentDirectory() ? "html/redeem.html" : "redeem.html"
-            }">Redeem</a></li>
-            <li><a href="${
               isCurrentDirectory() ? "html/cart.html" : "cart.html"
             }">Cart</a></li>
             <li><a href="${

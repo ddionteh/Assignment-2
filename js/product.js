@@ -28,13 +28,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Function to fetch products from RESTDB API
 async function fetchProducts() {
   try {
-    const response = await fetch('https://fedassignmentv2-62c5.restdb.io/rest/products', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-apikey': '65c4e3389ec8d460022d98b7',
+    const response = await fetch(
+      "https://fedassignmentv2-7a2a.restdb.io/rest/products",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-apikey": "65c614116a1c9939a9be0023",
+        },
       }
-  });
+    );
 
     if (!response.ok) throw new Error("Network response was not ok");
 
@@ -199,21 +202,21 @@ function createProductCard(product) {
   // Create card elements and fill with product data
   const cardContainer = document.getElementById("card-container");
   console.log("testing");
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  const image = document.createElement('img');
+  const card = document.createElement("div");
+  card.className = "product-card";
+  const image = document.createElement("img");
 
   // Construct the image URL directly using the provided 'Image' property
   image.src = `../images/product-${product.ProductID}.avif`;
   image.alt = product.Name;
 
   // Add an "Add to Cart" button
-  const addToCartBtn = document.createElement('button');
-  addToCartBtn.textContent = 'Add to Cart';
+  const addToCartBtn = document.createElement("button");
+  addToCartBtn.textContent = "View product";
   addToCartBtn.onclick = () => addToCart(product);
 
   // Set attributes for expanding the card
-  card.setAttribute('data-details', JSON.stringify(product));
+  card.setAttribute("data-details", JSON.stringify(product));
   card.onclick = expandCard;
 
   const name = document.createElement("h3");
@@ -252,25 +255,59 @@ function createProductCard(product) {
   cardContainer.appendChild(card);
 
   // Set up the click event listener to expand the card
-  card.addEventListener('click', function(event) {
-  // Prevent any parent handlers from being executed
-  event.stopPropagation();
-  
-  // Call the function to create an expanded product card
-  createExpandedProductCard(product);});
+  card.addEventListener("click", function (event) {
+    // Prevent any parent handlers from being executed
+    event.stopPropagation();
+
+    // Call the function to create an expanded product card
+    createExpandedProductCard(product);
+  });
   return card;
 }
 
 // Function to add item to cart
 function addToCart(product) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartItem = cart.find(item => item.ProductID === product.ProductID);
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartItem = cart.find((item) => item.ProductID === product.ProductID);
   if (cartItem) {
     cartItem.Quantity += 1;
   } else {
-    cart.push({ ProductID: product.ProductID, Name : product.Name, Quantity: 1, Image: `../images/product-${product.ProductID}.avif`, Description: product.Description, Category: product.Category, Gender: product.Gender, Availability: product.Availability });
+    cart.push({
+      ProductID: product.ProductID,
+      Name: product.Name,
+      Quantity: 1,
+      Image: `../images/product-${product.ProductID}.avif`,
+      Description: product.Description,
+      Category: product.Category,
+      Gender: product.Gender,
+      Availability: product.Availability,
+    });
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Play Lottie animation
+  playLottieAnimation();
+}
+
+// Function to play the Lottie animation
+function playLottieAnimation() {
+  // Display the Lottie animation
+  const lottieContainer = document.getElementById("lottie-animation");
+  lottieContainer.style.display = "block";
+
+  // Load the animation
+  const animation = lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: "svg",
+    loop: false,
+    autoplay: true,
+    path: "https://lottie.host/8b6bfc9b-5cba-4a47-8c7b-ada50b1a9b8b/hdYc6nUa5Q.json", // Provide the path to your Lottie animation JSON file
+  });
+
+  // When the animation completes, hide the Lottie container
+  animation.addEventListener("complete", () => {
+    lottieContainer.style.display = "none";
+  });
 }
 
 // Function to expand the product card
@@ -279,49 +316,42 @@ function expandCard(event) {
   event.stopPropagation();
 
   const productDetails = JSON.parse(this.dataset.details);
-  const expandedView = document.createElement('div');
-  expandedView.className = 'expanded-card';
+  const expandedView = document.createElement("div");
+  expandedView.className = "expanded-card";
   // Populate expandedView with productDetails...
   document.body.appendChild(expandedView);
-  document.body.classList.add('darken');
+  document.body.classList.add("darken");
 }
 
 // Close the expanded card
-function closeExpandedCard() {
-  document.querySelector('.expanded-card').remove();
-  document.body.classList.remove('darken');
-}
-
-// Function to create an expanded product card
 function createExpandedProductCard(product) {
   // Create the expanded card container
-  const expandedCard = document.createElement('div');
-  expandedCard.classList.add('expanded-card');
+  const expandedCard = document.createElement("div");
+  expandedCard.classList.add("expanded-card");
 
   // Create the content of the expanded card using the product details
   expandedCard.innerHTML = `
-    <div class="expanded-card-content">
-      <span class="close-expanded-card" onclick="closeExpandedCard()">&times;</span>
-      <img src="../images/product-${product.ProductID}.avif" alt="${product.Name}" class="expanded-product-image">
-      <h3>${product.Name}</h3>
-      <p>${product.Description}</p>
-      <p>Category: ${product.Category}</p>
-      <p>Gender: ${product.Gender}</p>
-      <p>Price: $${product.Price}</p>
-      <p>Availability: ${product.Availability}</p>
-      <p>Quantity Available: ${product.Quantity}</p>
-      <button class="add-to-cart-btn">Add to Cart</button>
-    </div>
-  `;
+  <div class="expanded-card-content">
+    <span class="close-expanded-card" onclick="closeExpandedCard()">&times;</span>
+    <img src="../images/product-${product.ProductID}.avif" alt="${product.Name}" class="expanded-product-image">
+    <h3>${product.Name}</h3>
+    <p>${product.Description}</p>
+    <p>Category: ${product.Category}</p>
+    <p>Gender: ${product.Gender}</p>
+    <p>Price: $${product.Price}</p>
+    <p>Availability: ${product.Availability}</p>
+    <p>Quantity Available: ${product.Quantity}</p>
+    <button class="add-to-cart-btn">Add to Cart</button>
+    <div id="lottie-animation"></div> <!-- Add a div for Lottie animation -->
+  </div>
+`;
 
   // Append the expanded card to the body
   document.body.appendChild(expandedCard);
-  document.body.classList.add('no-scroll'); // Disable scroll on body
+  document.body.classList.add("no-scroll"); // Disable scroll on body
 }
-
 // Function to close the expanded product card
 function closeExpandedCard() {
-  document.querySelector('.expanded-card').remove();
-  document.body.classList.remove('no-scroll'); // Enable scroll on body
+  document.querySelector(".expanded-card").remove();
+  document.body.classList.remove("no-scroll"); // Enable scroll on body
 }
-
